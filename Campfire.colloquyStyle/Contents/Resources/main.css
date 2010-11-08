@@ -42,7 +42,7 @@ a.member:hover {
 	clear: both;
 }
 
-.message {
+.message.incoming {
 	background: #efefef;
 }
 
