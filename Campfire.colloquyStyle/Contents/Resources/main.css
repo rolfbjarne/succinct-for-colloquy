@@ -33,6 +33,15 @@ a.member:hover {
 	text-decoration: underline;
 }
 
+.message:after,
+.event:after {
+	content: ".";
+	display: block;
+	height: 0;
+	overflow: hidden;
+	clear: both;
+}
+
 .message {
 	display: block;
 	background: #efefef;
