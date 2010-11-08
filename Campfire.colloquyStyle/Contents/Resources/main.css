@@ -78,7 +78,7 @@ a.member:hover {
 	padding: 4px 10px;
 	text-align: right;
 	font-weight: bold;
-	overflow: hidden;
+	word-wrap: break-word;
 }
 
 .message .sender a {
