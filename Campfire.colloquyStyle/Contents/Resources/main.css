@@ -56,24 +56,6 @@ a:hover {
 	overflow: hidden;
 }
 
-.header > span {
-}
-
-.header > span > span {
-}
-
-.header .left {
-}
-
-.header .right {
-}
-
-.header .sender {
-}
-
-.header img {
-}
-
 .messages {
 	display: block;
 	margin: 0;
@@ -166,35 +148,8 @@ a:hover {
 	color: #404040;
 }
 
-.incoming .header > span > span {
-}
-
-.incoming .messages .highlight {
-}
-
 .incoming .header .sender {
 	color: #333333;
-}
-
-.incoming .messages .time.inline {
-}
-
-.incoming .messages .time[title]:after {
-}
-
-.incoming .messages .sep {
-}
-
-.incoming .messages_bottom {
-}
-
-.incoming .messages_bottom .left {
-}
-
-.incoming .messages_bottom .right {
-}
-
-.outgoing .header > span > span {
 }
 
 .outgoing .header .sender {
@@ -211,24 +166,6 @@ a:hover {
 
 .outgoing .messages > span {
 	background: #ffffcc;
-}
-
-.outgoing .messages .time.inline {
-}
-
-.outgoing .messages .time[title]:after {
-}
-
-.outgoing .messages .sep {
-}
-
-.outgoing .messages_bottom {
-}
-
-.outgoing .messages_bottom .left {
-}
-
-.outgoing .messages_bottom .right {
 }
 
 .member {
