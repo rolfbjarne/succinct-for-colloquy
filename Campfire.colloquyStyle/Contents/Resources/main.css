@@ -81,7 +81,8 @@ a.member:hover {
 	color: #333;
 }
 
-.message .content {
+.message .content,
+.event .content {
 	margin-left: 108px;
 }
 
