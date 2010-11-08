@@ -55,6 +55,11 @@ a.member:hover {
 	background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
 }
 
+.message.notice {
+	color: #333;
+	background-color: #eeffee;
+}
+
 .timestamp {
 	float: right;
 	width: 70px;
