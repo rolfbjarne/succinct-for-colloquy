@@ -106,27 +106,41 @@ a.member:hover {
 .envelope + .event .timestamp {
 	border-top: 1px solid #dcdcdc;
 }
-.event + .envelope .message:first-child .content,
-.event + .envelope .message:first-child .timestamp {
-	border-top: 1px solid transparent;
-}
 
 .event {
-	border-bottom: white 1px solid;
-	color: #303030;
-	background: #d9e7fb;
 	font-size: 0.75em;
 	line-height: 1.5em;
+	font-style: italic;
 	word-wrap: break-word;
 	-khtml-line-break: after-white-space;
 	-khtml-nbsp-mode: space;
 }
 
-.event .timestamp {
+.event + .event {
+	margin-top: -4px; /* Un-do previous message's padding. */
+}
+.event + .event div {
+	padding-top: 0;
 }
 
-.event a {
-	color: #404040;
+.event .timestamp {
+	padding-bottom: 0;
+	font-style: normal;
+}
+
+.event,
+.event a,
+.event .timestamp {
+	color: #aaa;
+}
+
+.event:hover,
+.event:hover a,
+.event:hover .timestamp {
+	color: #4b4b4b;
+}
+
+.event .reason {
 }
 
 #consecutiveInsert {
