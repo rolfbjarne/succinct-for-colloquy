@@ -150,7 +150,7 @@
 			<xsl:variable name="hostmask" select="sender/@hostmask" />
 
 			<div class="envelope">
-				<div id="{message[1]/@id}" class="{$messageClasses}">
+				<div id="{message[1]/@id | @id}" class="{$messageClasses}">
 					<div class="timestamp"><xsl:value-of select="$timestamp" /> </div>
 					<div class="sender">
 						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a><span class="hidden">: </span>
