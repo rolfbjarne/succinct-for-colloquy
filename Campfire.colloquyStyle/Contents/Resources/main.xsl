@@ -1,16 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output omit-xml-declaration="yes" indent="no" />
-	<xsl:param name="consecutiveMessage" />
 	<xsl:param name="bulkTransform" />
 	<xsl:param name="timeFormat" />
 
 	<xsl:template match="/">
 		<xsl:choose>
-			<xsl:when test="$consecutiveMessage = 'yes'">
-				<xsl:apply-templates select="/envelope/message[last()]" mode="consecutive">
-					<xsl:with-param name="fromEnvelope" select="'no'" />
-				</xsl:apply-templates>
+			<xsl:when test="count( /envelope/message ) &gt; 1">
+				<xsl:apply-templates select="/envelope/message[last()]" />
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:apply-templates />
@@ -18,10 +15,9 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="message" mode="consecutive">
-		<xsl:param name="fromEnvelope" select="'no'" />
+	<xsl:template match="message">
 		<xsl:choose>
-			<xsl:when test="not( $consecutiveMessage = 'yes' ) and $fromEnvelope = 'no' and count( ../message[not( @ignored = 'yes' )] ) = 1 and not( @ignored = 'yes' )">
+			<xsl:when test="count( ../message[not( @ignored = 'yes' )] ) = 1 and not( @ignored = 'yes' )">
 				<xsl:apply-templates select=".." />
 			</xsl:when>
 			<xsl:otherwise>
@@ -63,9 +59,7 @@
 							<br />
 						</span>
 					<xsl:if test="not( $bulkTransform = 'yes' )">
-						<xsl:if test="$fromEnvelope = 'no'">
-							<xsl:processing-instruction name="message">type="consecutive"</xsl:processing-instruction>
-						</xsl:if>
+						<xsl:processing-instruction name="message">type="subsequent"</xsl:processing-instruction>
 						<span id="consecutiveInsert"><xsl:text> </xsl:text></span>
 					</xsl:if>
 				</xsl:if>
@@ -139,9 +133,7 @@
 								<xsl:apply-templates select="message[not( @ignored = 'yes' )][1]/child::node()" mode="copy" />
 								<br />
 							</span>
-							<xsl:apply-templates select="message[not( @ignored = 'yes' )][position() &gt; 1]" mode="consecutive">
-								<xsl:with-param name="fromEnvelope" select="'yes'" />
-							</xsl:apply-templates>
+							<xsl:apply-templates select="message[not( @ignored = 'yes' )][position() &gt; 1]" />
 							<xsl:if test="position() = last()">
 								<span id="consecutiveInsert"><xsl:text> </xsl:text></span>
 							</xsl:if>
