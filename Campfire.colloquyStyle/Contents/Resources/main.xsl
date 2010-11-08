@@ -48,18 +48,19 @@
 					<span class="sep"><xsl:text> </xsl:text></span>
 					<span class="hidden">[</span>
 					<span class="time inline"><xsl:value-of select="$timestamp" /></span>
-					<span class="hidden">] <xsl:if test="not( @action = 'yes' )"><xsl:value-of select="../sender" />: </xsl:if></span>
-					<span id="{@id}" class="message">
-						<xsl:if test="@action = 'yes'">
-							<xsl:text>&#8226; </xsl:text>
-							<a href="{$memberLink}" class="member action">
-							<xsl:value-of select="../sender" />
-							</a>
-							<xsl:text> </xsl:text>
-						</xsl:if>
-						<xsl:apply-templates select="child::node()" mode="copy" />
-						<br />
-					</span>
+					<span class="hidden">]
+					<xsl:if test="not( @action = 'yes' )"><xsl:value-of select="../sender" />: </xsl:if></span>
+						<span id="{@id}" class="message">
+							<xsl:if test="@action = 'yes'">
+								<xsl:text>&#8226; </xsl:text>
+								<a href="{$memberLink}" class="member action">
+									<xsl:value-of select="../sender" />
+								</a>
+								<xsl:text> </xsl:text>
+							</xsl:if>
+							<xsl:apply-templates select="child::node()" mode="copy" />
+							<br />
+						</span>
 					<xsl:if test="not( $bulkTransform = 'yes' )">
 						<xsl:if test="$fromEnvelope = 'no'">
 							<xsl:processing-instruction name="message">type="consecutive"</xsl:processing-instruction>
@@ -98,9 +99,9 @@
 					<xsl:when test="sender/@identifier">
 						<xsl:text>member:identifier:</xsl:text><xsl:value-of select="sender/@identifier" />
 					</xsl:when>
-			        <xsl:when test="sender/@nickname">
+					<xsl:when test="sender/@nickname">
 						<xsl:text>member:</xsl:text><xsl:value-of select="sender/@nickname" />
-			        </xsl:when>
+					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>member:</xsl:text><xsl:value-of select="sender" />
 					</xsl:otherwise>
@@ -114,9 +115,7 @@
 					<span>
 						<span>
 						<span class="sender">
-						<a href="{$memberLink}" class="member">
-						<xsl:value-of select="sender" />
-						</a>
+						<a href="{$memberLink}" class="member"><xsl:value-of select="sender" /></a>
 						</span>
 						</span>
 					</span>
@@ -132,7 +131,7 @@
 								<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
 									<xsl:text>&#8226; </xsl:text>
 									<a href="{$memberLink}" class="member action">
-									<xsl:value-of select="sender" />
+										<xsl:value-of select="sender" />
 									</a>
 									<xsl:text> </xsl:text>
 								</xsl:if>
@@ -164,19 +163,19 @@
 		</xsl:variable>
 
 		<span class="event">
-		<span class="hidden">[</span>
-		<span class="time"><xsl:value-of select="$timestamp" /></span>
-		<span class="hidden">] </span>
+			<span class="hidden">[</span>
+			<span class="time"><xsl:value-of select="$timestamp" /></span>
+			<span class="hidden">] </span>
 			<span class="message">
-			<xsl:apply-templates select="message/child::node()" mode="event" />
-			<xsl:if test="string-length( reason )">
-				<span class="reason">
-					<xsl:text> (</xsl:text>
-					<xsl:apply-templates select="reason/child::node()" mode="copy" />
-					<xsl:text>)</xsl:text>
-				</span>
-			</xsl:if>
-			<br />
+				<xsl:apply-templates select="message/child::node()" mode="event" />
+				<xsl:if test="string-length( reason )">
+					<span class="reason">
+						<xsl:text> (</xsl:text>
+						<xsl:apply-templates select="reason/child::node()" mode="copy" />
+						<xsl:text>)</xsl:text>
+					</span>
+				</xsl:if>
+				<br />
 			</span>
 		</span>
 	</xsl:template>
@@ -184,7 +183,6 @@
 	<xsl:template match="a" mode="copy">
 		<xsl:variable name="extension" select="substring(@href,string-length(@href) - 3, 4)" />
 		<xsl:variable name="extensionLong" select="substring(@href,string-length(@href) - 4, 5)" />
-
 		<xsl:choose>
 			<xsl:when test="$extension = '.jpg' or $extension = '.JPG' or $extensionLong = '.jpeg' or $extensionLong = '.JPEG'">
 				<a href="{@href}" title="{@href}"><img src="{@href}" alt="Loading Image..." onload="scrollToBottom()" /></a>
@@ -205,7 +203,7 @@
 				<a href="{@href}" title="{@href}"><img src="{@href}" alt="Loading Image..." onload="scrollToBottom()" /></a>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:copy-of select="current()"/>
+				<xsl:copy-of select="current()" />
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -247,34 +245,34 @@
 		<xsl:variable name='hour' select='substring($date, 12, 2)' />
 		<xsl:variable name='minute' select='substring($date, 15, 2)' />
 		<xsl:choose>
-		  <xsl:when test="contains($timeFormat,'H')">
-		    <!-- 24hr format -->
-		    <xsl:value-of select="concat($hour,':',$minute)" />
-		  </xsl:when>
-		  <xsl:otherwise>
-		    <!-- am/pm format -->
-		    <xsl:choose>
-		      <xsl:when test="number($hour) &gt; 12">
-			<xsl:value-of select="number($hour) - 12" />
-		      </xsl:when>
-		      <xsl:when test="number($hour) = 0">
-			<xsl:text>12</xsl:text>
-		      </xsl:when>
-		      <xsl:otherwise>
-			<xsl:value-of select="$hour" />
-		      </xsl:otherwise>
-		    </xsl:choose>
-		    <xsl:text>:</xsl:text>
-		    <xsl:value-of select="$minute" />
-		    <xsl:choose>
-		      <xsl:when test="number($hour) &gt;= 12">
-			<xsl:text>p</xsl:text>
-		      </xsl:when>
-		      <xsl:otherwise>
-			<xsl:text>a</xsl:text>
-		      </xsl:otherwise>
-		    </xsl:choose>
-		  </xsl:otherwise>
+			<xsl:when test="contains($timeFormat,'H')">
+				<!-- 24hr format -->
+				<xsl:value-of select="concat($hour,':',$minute)" />
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- am/pm format -->
+				<xsl:choose>
+					<xsl:when test="number($hour) &gt; 12">
+						<xsl:value-of select="number($hour) - 12" />
+					</xsl:when>
+					<xsl:when test="number($hour) = 0">
+						<xsl:text>12</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$hour" />
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:text>:</xsl:text>
+				<xsl:value-of select="$minute" />
+				<xsl:choose>
+					<xsl:when test="number($hour) &gt;= 12">
+						<xsl:text>p</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>a</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 </xsl:transform>
