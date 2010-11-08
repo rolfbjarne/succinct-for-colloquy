@@ -30,6 +30,27 @@ a:hover {
 	text-shadow: rgba( 0, 0, 0, .3 ) 0 1px 1px;
 }
 
+a.member {
+	text-decoration: none !important;
+	color: inherit !important;
+}
+
+a.member:hover {
+	text-decoration: underline;
+}
+
+.message {
+	display: block;
+	background: #efefef;
+}
+
+.message.outgoing {
+	background: #ffffcc;
+}
+
+.message .sender {
+	color: #333333;
+}
 .message .sender {
 	display: block;
 	position: relative;
@@ -42,11 +63,6 @@ a:hover {
 	padding: 4px;
 	font-weight: bold;
 	overflow: hidden;
-}
-
-.message {
-	display: block;
-	background: #efefef;	
 }
 
 .message .content {
@@ -101,23 +117,6 @@ a:hover {
 
 .event a {
 	color: #404040;
-}
-
-.message .sender {
-	color: #333333;
-}
-
-.message.outgoing {
-	background: #ffffcc;
-}
-
-a.member {
-	text-decoration: none !important;
-	color: inherit !important;
-}
-
-a.member:hover {
-	text-decoration: underline;
 }
 
 #consecutiveInsert {
