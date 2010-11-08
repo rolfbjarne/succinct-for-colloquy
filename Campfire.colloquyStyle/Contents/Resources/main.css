@@ -1,12 +1,12 @@
 /*  Based on Fiat - by dzhim and nsraffy  */
 
 body {
-	margin: 4px 0 5px 0;
+	margin: 0;
+	padding: 0;
 	color: #4b4b4b;
 	background: white;
 	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
 	font-size: 0.8em;
-	padding: 0;
 }
 
 a img {
