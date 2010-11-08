@@ -89,6 +89,7 @@ a.member:hover {
 .message .content,
 .event .content {
 	margin-left: 140px;
+	margin-right: 70px;
 	padding: 4px 10px;
 }
 
