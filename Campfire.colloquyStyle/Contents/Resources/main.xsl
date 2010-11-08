@@ -76,7 +76,7 @@
 						<div class="timestamp"><xsl:value-of select="$timestamp" /> </div>
 						<xsl:if test="not( @action = 'yes' )">
 						<div class="sender">
-							<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="../sender" /></a>:
+							<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="../sender" /></a><span class="hidden">: </span>
 						</div>
 						</xsl:if>
 						<div class="content">
@@ -155,9 +155,8 @@
 				<div id="{message[not( @ignored = 'yes' )][1]/@id}" class="{$messageClasses}">
 					<div class="timestamp"><xsl:value-of select="$timestamp" /> </div>
 					<div class="sender">
-						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a>
+						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a><span class="hidden">: </span>
 					</div>
-					<span class="hidden">: </span>
 					<div class="content">
 						<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
 							<xsl:text>• </xsl:text>
