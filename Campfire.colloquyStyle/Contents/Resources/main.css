@@ -42,18 +42,13 @@ a.member:hover {
 	clear: both;
 }
 
-.message.incoming {
-	background: #efefef;
-}
-.message.incoming .sender {
-	background: #efefef;
-}
-.message.incoming .content {
-	background: #fff;
+.message.incoming,
+.event {
+	background: url(images/background-incoming.png) left top repeat-y;
 }
 
 .message.outgoing {
-	background: #ffffcc;
+	background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
 }
 
 .timestamp {
@@ -93,12 +88,27 @@ a.member:hover {
 	padding: 4px 10px;
 }
 
-.message .content {
-	border-left: 1px solid #dcdcdc;
-	border-bottom: #efefef 1px solid;
-	word-wrap: break-word;
-	-khtml-line-break: after-white-space;
-	-khtml-nbsp-mode: space;
+/* message borders */
+.message div {
+	border-top: 1px solid #dcdcdc;
+}
+.message div.sender {
+	border-top: 1px solid transparent;
+}
+.envelope + .envelope .message.outgoing:first-child .sender {
+	border-top: 1px solid #efefef;
+}
+.envelope:last-child,
+.event:last-child {
+	border-bottom: 1px solid #dcdcdc;
+}
+.envelope + .event .content,
+.envelope + .event .timestamp {
+	border-top: 1px solid #dcdcdc;
+}
+.event + .envelope .message:first-child .content,
+.event + .envelope .message:first-child .timestamp {
+	border-top: 1px solid transparent;
 }
 
 .event {
