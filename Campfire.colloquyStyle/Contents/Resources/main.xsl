@@ -72,10 +72,7 @@
 
 					<xsl:variable name="hostmask" select="../sender/@hostmask" />
 
-					<span class="sep"><xsl:text> </xsl:text></span>
-					<span class="hidden">[</span>
-					<span class="time inline"><xsl:value-of select="$timestamp" /></span>
-					<span class="hidden">]
+					<span class="time inline"><xsl:value-of select="$timestamp" /> </span>
 					<xsl:if test="not( @action = 'yes' )"><a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="../sender" /></a>: </xsl:if></span>
 						<span id="{@id}" class="{$messageClasses}">
 							<xsl:if test="@action = 'yes'">
@@ -151,44 +148,26 @@
 
 			<span class="{$messageClasses}">
 				<span class="hidden">[<xsl:value-of select="$timestamp" />] </span>
-				<span class="header_top"><xsl:text> </xsl:text></span>
-				<span class="header">
-					<span>
-						<span>
-						<span class="sender">
-						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a>
-						</span>
-						</span>
-					</span>
-					<span class="left"><xsl:text> </xsl:text></span>
-					<span class="right"><xsl:text> </xsl:text></span>
+				<span class="sender">
+					<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a>
 				</span>
 				<span class="hidden">: </span>
 				<span class="messages">
-					<span>
-						<span>
-							<span class="time" title="{$timestamp}"><xsl:text> </xsl:text></span>
-							<span id="{message[not( @ignored = 'yes' )][1]/@id}" class="message">
-								<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
-									<xsl:text>• </xsl:text>
-									<a href="{$memberLink}" title="{$hostmask}" class="action {$memberClasses}">
-										<xsl:value-of select="sender" />
-									</a>
-									<xsl:text> </xsl:text>
-								</xsl:if>
-								<xsl:apply-templates select="message[not( @ignored = 'yes' )][1]/child::node()" mode="copy" />
-								<br />
-							</span>
-							<xsl:apply-templates select="message[not( @ignored = 'yes' )][position() &gt; 1]" />
-							<xsl:if test="position() = last()">
-								<span id="consecutiveInsert"><xsl:text> </xsl:text></span>
-							</xsl:if>
-						</span>
+					<span id="{message[not( @ignored = 'yes' )][1]/@id}" class="message">
+						<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
+							<xsl:text>• </xsl:text>
+							<a href="{$memberLink}" title="{$hostmask}" class="action {$memberClasses}">
+								<xsl:value-of select="sender" />
+							</a>
+							<xsl:text> </xsl:text>
+						</xsl:if>
+						<xsl:apply-templates select="message[not( @ignored = 'yes' )][1]/child::node()" mode="copy" />
+						<br />
 					</span>
-				</span>
-				<span class="messages_bottom">
-					<span class="left"><xsl:text> </xsl:text></span>
-					<span class="right"><xsl:text> </xsl:text></span>
+					<xsl:apply-templates select="message[not( @ignored = 'yes' )][position() &gt; 1]" />
+					<xsl:if test="position() = last()">
+						<span id="consecutiveInsert"><xsl:text> </xsl:text></span>
+					</xsl:if>
 				</span>
 			</span>
 		</xsl:if>
@@ -202,9 +181,7 @@
 		</xsl:variable>
 
 		<span class="event">
-			<span class="hidden">[</span>
-			<span class="time"><xsl:value-of select="$timestamp" /></span>
-			<span class="hidden">] </span>
+			<span class="time"><xsl:value-of select="$timestamp" /> </span>
 			<span class="message">
 				<xsl:apply-templates select="message/child::node()" mode="event" />
 				<xsl:if test="string-length( reason )">
