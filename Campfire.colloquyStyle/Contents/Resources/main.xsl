@@ -73,7 +73,7 @@
 					<xsl:variable name="hostmask" select="../sender/@hostmask" />
 
 					<div id="{@id}" class="{$messageClasses}">
-						<div class="time inline"><xsl:value-of select="$timestamp" /> </div>
+						<div class="timestamp"><xsl:value-of select="$timestamp" /> </div>
 						<xsl:if test="not( @action = 'yes' )">
 						<div class="sender">
 							<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="../sender" /></a>:
@@ -153,7 +153,7 @@
 
 			<div class="envelope">
 				<div id="{message[not( @ignored = 'yes' )][1]/@id}" class="{$messageClasses}">
-					<div class="hidden">[<xsl:value-of select="$timestamp" />] </div>
+					<div class="timestamp"><xsl:value-of select="$timestamp" /> </div>
 					<div class="sender">
 						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a>
 					</div>
@@ -185,7 +185,7 @@
 		</xsl:variable>
 
 		<div class="event">
-			<div class="time"><xsl:value-of select="$timestamp" /> </div>
+			<div class="timestamp"><xsl:value-of select="$timestamp" /> </div>
 			<div class="content">
 				<xsl:apply-templates select="message/child::node()" mode="event" />
 				<xsl:if test="string-length( reason )">
