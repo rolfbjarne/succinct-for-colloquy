@@ -43,7 +43,6 @@ a.member:hover {
 }
 
 .message {
-	display: block;
 	background: #efefef;
 }
 
@@ -55,8 +54,6 @@ a.member:hover {
 	color: #333333;
 }
 .message .sender {
-	display: block;
-	position: relative;
 	width: 100px;
 	float: left;
 	text-align: right;
@@ -69,7 +66,6 @@ a.member:hover {
 }
 
 .message .content {
-	display: block;
 	background: #fff;
 	margin-left: 108px;
 	padding-left: 1px;
@@ -80,7 +76,6 @@ a.member:hover {
 	padding-top: 4px;
 	padding-bottom: 4px;
 	padding-left: 4px;
-	display: block;
 	margin-bottom: 0;
 	border-bottom: #efefef 1px solid;
 	word-wrap: break-word;
@@ -96,13 +91,11 @@ a.member:hover {
 	line-height: 1.5em;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	display: block;
 }
 
 .event .timestamp {
 	margin: 0 4px;
 	padding: 0;
-	display: block;
 	float: left;
 	color: #333333;
 	width: 100px;
