@@ -47,6 +47,10 @@ a.member:hover {
 	background: url(images/background-incoming.png) left top repeat-y;
 }
 
+.message.incoming.highlight {
+	background-color: #d9e7fb;
+}
+
 .message.outgoing {
 	background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
 }
@@ -86,6 +90,11 @@ a.member:hover {
 	margin-left: 140px;
 	margin-right: 70px;
 	padding: 4px 10px;
+}
+
+.message .content .highlight {
+	font-weight: bold;
+	color: #333;
 }
 
 /* message borders */
