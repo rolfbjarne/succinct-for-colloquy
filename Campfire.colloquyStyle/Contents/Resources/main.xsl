@@ -22,6 +22,27 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:if test="not( @ignored = 'yes' ) and not( ../@ignored = 'yes' )">
+					<xsl:variable name="messageClasses">
+						<xsl:text>message</xsl:text>
+						<xsl:if test="@highlight = 'yes'">
+							<xsl:text> highlight</xsl:text>
+						</xsl:if>
+						<xsl:choose>
+							<xsl:when test="../sender/@self = 'yes'">
+								<xsl:text> outgoing</xsl:text>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> incoming</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+						<xsl:if test="@action = 'yes'">
+							<xsl:text> action</xsl:text>
+						</xsl:if>
+						<xsl:if test="@type = 'notice'">
+							<xsl:text> notice</xsl:text>
+						</xsl:if>
+					</xsl:variable>
+
 					<xsl:variable name="timestamp">
 						<xsl:call-template name="short-time">
 							<xsl:with-param name="date" select="@received" />
@@ -56,7 +77,7 @@
 					<span class="time inline"><xsl:value-of select="$timestamp" /></span>
 					<span class="hidden">]
 					<xsl:if test="not( @action = 'yes' )"><a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="../sender" /></a>: </xsl:if></span>
-						<span id="{@id}" class="message">
+						<span id="{@id}" class="{$messageClasses}">
 							<xsl:if test="@action = 'yes'">
 								<xsl:text>• </xsl:text>
 								<a href="{$memberLink}" title="{$hostmask}" class="action {$memberClasses}">
@@ -78,18 +99,25 @@
 
 	<xsl:template match="envelope">
 		<xsl:if test="not( @ignored = 'yes' ) and count( message[not( @ignored = 'yes' )] ) &gt;= 1">
-			<xsl:variable name="senderClasses">
+			<xsl:variable name="messageClasses">
+				<xsl:text>message</xsl:text>
+				<xsl:if test="message[not( @ignored = 'yes' )][1]/@highlight = 'yes'">
+					<xsl:text> highlight</xsl:text>
+				</xsl:if>
 				<xsl:choose>
-					<xsl:when test="message[not( @ignored = 'yes' )][1]/@highlight = 'yes'">
-						<xsl:text>incoming highlight</xsl:text>
-					</xsl:when>
 					<xsl:when test="sender/@self = 'yes'">
-						<xsl:text>outgoing</xsl:text>
+						<xsl:text> outgoing</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text>incoming</xsl:text>
+						<xsl:text> incoming</xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
+				<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
+					<xsl:text> action</xsl:text>
+				</xsl:if>
+				<xsl:if test="message[not( @ignored = 'yes' )][1]/@type = 'notice'">
+					<xsl:text> notice</xsl:text>
+				</xsl:if>
 			</xsl:variable>
 
 			<xsl:variable name="timestamp">
@@ -121,7 +149,7 @@
 
 			<xsl:variable name="hostmask" select="sender/@hostmask" />
 
-			<span class="{$senderClasses}">
+			<span class="{$messageClasses}">
 				<span class="hidden">[<xsl:value-of select="$timestamp" />] </span>
 				<span class="header_top"><xsl:text> </xsl:text></span>
 				<span class="header">
