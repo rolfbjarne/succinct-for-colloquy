@@ -21,7 +21,7 @@
 				<xsl:apply-templates select=".." />
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:if test="not( @ignored = 'yes' ) and not( ../@ignored = 'yes' )">
+				<xsl:if test="not( @ignored = 'yes' )">
 					<xsl:variable name="messageClasses">
 						<xsl:text>message</xsl:text>
 						<xsl:if test="@highlight = 'yes'">
@@ -150,7 +150,7 @@
 			<xsl:variable name="hostmask" select="sender/@hostmask" />
 
 			<div class="envelope">
-				<div id="{message[not( @ignored = 'yes' )][1]/@id}" class="{$messageClasses}">
+				<div id="{message[1]/@id}" class="{$messageClasses}">
 					<div class="timestamp"><xsl:value-of select="$timestamp" /> </div>
 					<div class="sender">
 						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a><span class="hidden">: </span>
