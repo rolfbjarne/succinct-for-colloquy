@@ -45,6 +45,12 @@ a.member:hover {
 .message.incoming {
 	background: #efefef;
 }
+.message.incoming .sender {
+	background: #efefef;
+}
+.message.incoming .content {
+	background: #fff;
+}
 
 .message.outgoing {
 	background: #ffffcc;
@@ -67,7 +73,6 @@ a.member:hover {
 	width: 100px;
 	padding: 4px;
 	text-align: right;
-	background: #efefef;
 	font-weight: bold;
 	overflow: hidden;
 }
@@ -86,7 +91,6 @@ a.member:hover {
 	padding-left: 4px;
 	border-left: 1px solid #dcdcdc;
 	border-bottom: #efefef 1px solid;
-	background: #fff;
 	word-wrap: break-word;
 	-khtml-line-break: after-white-space;
 	-khtml-nbsp-mode: space;
