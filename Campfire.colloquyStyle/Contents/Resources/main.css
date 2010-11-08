@@ -51,10 +51,9 @@ a.member:hover {
 }
 
 .timestamp {
-	float: left;
-	width: 100px;
-	margin: 0 4px;
-	padding: 0;
+	float: right;
+	width: 70px;
+	padding: 0 10px;
 	color: #333333;
 	text-align: right;
 }
