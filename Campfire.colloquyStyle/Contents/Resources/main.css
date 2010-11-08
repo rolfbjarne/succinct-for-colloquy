@@ -54,8 +54,12 @@ a.member:hover {
 	float: right;
 	width: 70px;
 	padding: 4px 10px;
-	color: #333333;
+	color: #666;
 	text-align: right;
+}
+
+.message .timestamp {
+	font-size: 0.75em;
 }
 
 .message .sender {
