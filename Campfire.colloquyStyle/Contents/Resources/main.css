@@ -50,6 +50,15 @@ a.member:hover {
 	background: #ffffcc;
 }
 
+.timestamp {
+	float: left;
+	width: 100px;
+	margin: 0 4px;
+	padding: 0;
+	color: #333333;
+	text-align: right;
+}
+
 .message .sender {
 	color: #333333;
 }
@@ -94,12 +103,6 @@ a.member:hover {
 }
 
 .event .timestamp {
-	margin: 0 4px;
-	padding: 0;
-	float: left;
-	color: #333333;
-	width: 100px;
-	text-align: right;
 }
 
 .event .content {
