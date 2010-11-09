@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Campfire Colloquy style</string>
+	<string>Campfire Colloquy Chat Style</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.blaimhq.colloquy.style.campfire</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -18,101 +18,81 @@
 	<array>
 		<dict>
 			<key>default</key>
-			<string>#a3c5f8</string>
+			<string>#0033cc</string>
 			<key>description</key>
-			<string>Your headers</string>
+			<string>Visited links</string>
 			<key>style</key>
-			<string>.outgoing .header &gt; span &gt; span { background-color: %@ !important; } .outgoing .messages .sep { background-color: %@ !important; }</string>
+			<string>a:visited { color: %@; }</string>
 			<key>type</key>
 			<string>color</string>
 		</dict>
 		<dict>
 			<key>default</key>
-			<string>#234578</string>
+			<string>#333333</string>
 			<key>description</key>
-			<string>Your header text</string>
+			<string>Nickname text</string>
 			<key>style</key>
-			<string>.outgoing .header .sender { color: %@ !important; }</string>
+			<string>.message .sender a { color: %@ !important; }</string>
 			<key>type</key>
 			<string>color</string>
 		</dict>
 		<dict>
 			<key>default</key>
-			<string>#234578</string>
+			<string>#666666</string>
 			<key>description</key>
-			<string>Your timestamps</string>
+			<string>Timestamp text</string>
 			<key>style</key>
-			<string>.outgoing .messages .time.inline { color: %@ !important; } .outgoing .messages .time[title]:after { color: %@ !important; }</string>
+			<string>.timestamp { color: %@ !important; }</string>
 			<key>type</key>
 			<string>color</string>
 		</dict>
 		<dict>
 			<key>default</key>
-			<string>#a6d984</string>
-			<key>description</key>
-			<string>Headers</string>
-			<key>style</key>
-			<string>.incoming .header &gt; span &gt; span { background-color: %@ !important; } .incoming .messages .sep { background-color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>#265904</string>
-			<key>description</key>
-			<string>Header text</string>
-			<key>style</key>
-			<string>.incoming .header .sender { color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>#265904</string>
-			<key>description</key>
-			<string>Timestamps</string>
-			<key>style</key>
-			<string>.incoming .messages .time.inline { color: %@ !important; } .incoming .messages .time[title]:after { color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>#265904</string>
-			<key>description</key>
-			<string>Highlight words</string>
-			<key>style</key>
-			<string>.incoming .messages .highlight { color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>#404040</string>
-			<key>description</key>
-			<string>Event timestamps</string>
-			<key>style</key>
-			<string>.event .time { color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>#303030</string>
+			<string>#aaaaaa</string>
 			<key>description</key>
 			<string>Event text</string>
 			<key>style</key>
-			<string>.event .message { color: %@ !important; }</string>
+			<string>.event, .event a, .event .timestamp { color: %@ !important; }</string>
 			<key>type</key>
 			<string>color</string>
 		</dict>
 		<dict>
 			<key>default</key>
-			<string>#404040</string>
+			<string>#d9e7fb</string>
 			<key>description</key>
-			<string>Event links</string>
+			<string>Highlighted messages</string>
 			<key>style</key>
-			<string>.event a { color: %@ !important; }</string>
+			<string>.message.incoming.highlight { background-color: %@ !important; }</string>
+			<key>type</key>
+			<string>color</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<string>#eeffee</string>
+			<key>description</key>
+			<string>Notices</string>
+			<key>style</key>
+			<string>.message.notice { background-color: %@ !important; }</string>
+			<key>type</key>
+			<string>color</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<string>#ffffff</string>
+			<key>description</key>
+			<string>Actions</string>
+			<key>style</key>
+			<string>.message.action { background-color: %@ !important; }</string>
+			<key>type</key>
+			<string>color</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<string>#ffffcc</string>
+			<key>description</key>
+			<string>Your messages</string>
+			<key>style</key>
+			<string>.message.outgoing { background-color: %@ !important; }</string>
 			<key>type</key>
 			<string>color</string>
 		</dict>
