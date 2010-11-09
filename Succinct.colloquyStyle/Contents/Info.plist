@@ -5,13 +5,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Campfire Colloquy Chat Style</string>
+	<string>Succinct Colloquy Chat Style</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.blaimhq.colloquy.style.campfire</string>
+	<string>net.albin.colloquy.style.succinct</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Campfire</string>
+	<string>Succinct</string>
 	<key>CFBundlePackageType</key>
 	<string>coSt</string>
 	<key>JVStyleOptions</key>
@@ -98,6 +98,6 @@
 		</dict>
 	</array>
 	<key>NSHumanReadableCopyright</key>
-	<string>Claudio Perez Gamayo</string>
+	<string>© 2010 John Albin Wilkins</string>
 </dict>
 </plist>
