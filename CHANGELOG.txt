@@ -1,22 +1,3 @@
-0.4.3
-  * [Fix] Styling breaks On certain messages (fixed by watsonian)
-
-0.4.2
-	* two variants, with and without margin (campfire have margin)
-
-0.4.1
-	* when someone post a link of a image, the image will be displayed like on campfire
-	* same nickname don't be repeated on each message if the messages are consecutive.
-	* nicks too long don't mess the layout anymore
-
-0.3.1
-	* can't remember
-
-0.3
-	* can't remember
-
-0.2
-	* can't remember
-
-0.1
-	* initial release
+Succinct 1.0, 2010-11-10
+------------------------
+- Initial release
