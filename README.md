@@ -18,7 +18,7 @@ Installation
 1. Copy the file Succinct.colloquyStyle file to this folder in your home folder:
      Library -> Application Support -> Colloquy -> Styles
 
-2. Start Colloquy. Or (if already open) type "/reload style" in a Colloquy chat window.
+2. Start or re-start Colloquy. (Typing "/reload style" in a Colloquy chat window may work, but is buggy.)
 
 3. Select the “Succinct” option from the Style drop-down.
 
