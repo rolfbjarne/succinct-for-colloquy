@@ -1,11 +1,11 @@
-Colloquy (<http://colloquy.info>) is a very nice IRC client for Mac OS X. It does, however, need some help in the area of useful chat styles.
+Colloquy (<http://colloquy.info>) is a very nice IRC client for Mac OS X. It does, however, need some serious help in the area of useful chat styles.
 
 
 Four reasons to love “Succinct” for Colloquy
 --------------------------------------------
 
 1. Simple clean design.
-2. Emphasizes what you you need.
+2. Emphasizes what you need.
 3. De-emphasizes what you don’t.
 4. Customize what you hate.
 
@@ -15,7 +15,7 @@ Four reasons to love “Succinct” for Colloquy
 Installation
 ------------
 
-1. Copy the file Succinct.colloquyStyle file to this folder in your home folder:
+1. Copy the Succinct.colloquyStyle file to this folder in your home folder:
      Library -> Application Support -> Colloquy -> Styles
 
 2. Start or re-start Colloquy. (Typing "/reload style" in a Colloquy chat window may work, but is buggy.)
