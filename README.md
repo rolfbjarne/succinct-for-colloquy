@@ -9,7 +9,7 @@ Four reasons to love “Succinct” for Colloquy
 3. De-emphasizes what you don’t.
 4. Customize what you hate.
 
-<img src="https://github.com/JohnAlbin/succinct-for-colloquy/raw/master/screenshot.png" width="628" alt="Screenshot" />
+<img src="https://github.com/JohnAlbin/succinct-for-colloquy/raw/master/screenshot.png" width="800" alt="Screenshot" />
 
 
 Installation
