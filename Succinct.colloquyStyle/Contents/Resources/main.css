@@ -1,168 +1,165 @@
 body {
-	margin: 0;
-	padding: 0;
-	color: #4b4b4b;
-	background-color: white;
-	font-family: "Lucida Grande";
-	font-size: 0.8em;
-	line-height: 1.5em;
-}
-
-a img {
-	border: 0;
+  margin: 0;
+  padding: 0;
+  color: #4b4b4b;
+  background-color: white;
+  font-family: "Lucida Grande";
+  font-size: 0.8em;
+  line-height: 1.5em;
 }
 
 img {
-	max-height: 300px;
-	max-width: 485px; /* Golden ratio ~ 485/300 */
+  border: 0;
+  max-height: 300px;
+  max-width: 485px; /* Golden ratio ~ 485/300 */
 }
 
 a:link {
-	color: #0033cc;
+  color: #0033cc;
 }
 
 a:visited {
-	color: #0033cc;
+  color: #0033cc;
 }
 
 a:hover {
-	text-shadow: rgba( 0, 0, 0, .3 ) 0 1px 1px;
+  text-shadow: rgba(0, 0, 0, .3) 0 1px 1px;
 }
 
-a.member {
-	color: #4b4b4b;
-	text-decoration: none;
+.member {
+  color: #4b4b4b;
+  text-decoration: none;
 }
 
-a.member:hover {
-	text-decoration: underline;
+.member:hover {
+  text-decoration: underline;
 }
 
 .message:after,
 .event:after {
-	content: ".";
-	display: block;
-	height: 0;
-	overflow: hidden;
-	clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
 }
 
 .message.incoming,
 .event {
-	background: url(images/background-incoming.png) left top repeat-y;
+  background: url(images/background-incoming.png) left top repeat-y;
 }
 
 .message.incoming.highlight {
-	background-color: #d9e7fb;
+  background-color: #d9e7fb;
 }
 
 .message.outgoing {
-	background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
+  background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
 }
 
 .message.notice {
-	color: #333;
-	background-color: #eeffee;
+  color: #333;
+  background-color: #eeffee;
 }
 
 .timestamp {
-	float: right;
-	width: 70px;
-	padding: 4px 10px;
-	color: #666;
-	text-align: right;
+  float: right;
+  width: 70px;
+  padding: 4px 10px;
+  color: #666;
+  text-align: right;
 }
 
 .message .timestamp {
-	font-size: 0.75em;
+  font-size: 0.75em;
 }
 
 .message .sender {
-	float: left;
-	width: 120px; /* 140 - 10 - 10 (padding) */
-	padding: 4px 10px;
-	text-align: right;
-	font-weight: bold;
-	text-shadow: rgba(255, 255, 255, 1) 1px 1px 0;
-	word-wrap: break-word;
+  float: left;
+  width: 120px; /* 140 - 10 - 10 (padding) */
+  padding: 4px 10px;
+  text-align: right;
+  font-weight: bold;
+  text-shadow: rgba(255, 255, 255, 1) 1px 1px 0;
+  word-wrap: break-word;
 }
 
 .message .sender a {
-	color: #333;
+  color: #333;
 }
 
 .message + .message .sender {
-	text-indent: -900px;
-	text-align: left;
+  text-indent: -900px;
+  text-align: left;
 }
 
 .message .content,
 .event .content {
-	margin-left: 140px;
-	margin-right: 70px;
-	padding: 4px 10px;
+  margin-left: 140px;
+  margin-right: 70px;
+  padding: 4px 10px;
 }
 
 .message .content .highlight {
-	font-weight: bold;
-	color: #333;
+  font-weight: bold;
+  color: #333;
 }
 
 /* message borders */
 .message div {
-	border-top: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
 }
 .message div.sender {
-	border-top: 1px solid transparent;
+  border-top: 1px solid transparent;
 }
 .envelope + .envelope .message.outgoing:first-child .sender {
-	border-top: 1px solid #efefef;
+  border-top: 1px solid #efefef;
 }
 .envelope:last-child,
 .event:last-child {
-	border-bottom: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
 }
 .envelope + .event .content,
 .envelope + .event .timestamp {
-	border-top: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
 }
 
 .event {
-	font-size: 0.75em;
-	line-height: 1.5em;
-	font-style: italic;
-	word-wrap: break-word;
-	-khtml-line-break: after-white-space;
-	-khtml-nbsp-mode: space;
+  font-size: 0.75em;
+  line-height: 1.5em;
+  font-style: italic;
+  word-wrap: break-word;
+  -khtml-line-break: after-white-space;
+  -khtml-nbsp-mode: space;
 }
 
 .event + .event {
-	margin-top: -4px; /* Un-do previous message's padding. */
+  margin-top: -4px; /* Un-do previous message's padding. */
 }
 .event + .event div {
-	padding-top: 0;
+  padding-top: 0;
 }
 
 .event .timestamp {
-	padding-bottom: 0;
-	font-style: normal;
+  padding-bottom: 0;
+  font-style: normal;
 }
 
 .event,
 .event a,
 .event .timestamp {
-	color: #aaa;
+  color: #aaa;
 }
 
 .event:hover,
 .event:hover a,
 .event:hover .timestamp {
-	color: #4b4b4b;
+  color: #4b4b4b;
 }
 
 .event .reason {
 }
 
 #consecutiveInsert {
-	display: none;
+  display: none;
 }
