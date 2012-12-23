@@ -1,0 +1,156 @@
+/**
+ * Hide debug tools for normal usage.
+ */
+.debug {
+//  display: none;
+}
+
+%clearfix {
+  @include pie-clearfix;
+}
+
+%hide-text {
+  @include hide-text;
+}
+
+/**
+ * Member links
+ */
+.member {
+  color: $grey-text;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.message.incoming,
+.event {
+  background: url(images/background-incoming.png) left top repeat-y;
+}
+
+.timestamp {
+  float: right;
+  width: 70px;
+  padding: 4px 10px;
+  color: #666;
+  text-align: right;
+}
+
+%content {
+  margin-left: 140px;
+  margin-right: 70px;
+  padding: 4px 10px;
+}
+
+.message {
+  @extend %clearfix;
+
+  &.incoming.highlight {
+    background-color: #d9e7fb;
+  }
+
+  &.outgoing {
+    background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
+  }
+
+  &.notice {
+    color: #333;
+    background-color: #eeffee;
+  }
+
+  .timestamp {
+    font-size: 0.75em;
+  }
+
+  .sender {
+    float: left;
+    width: 120px; /* 140 - 10 - 10 (padding) */
+    padding: 4px 10px;
+    text-align: right;
+    font-weight: bold;
+    text-shadow: rgba(255, 255, 255, 1) 1px 1px 0;
+    word-wrap: break-word;
+
+    a {
+      color: #333;
+    }
+    .message + & {
+      @extend %hide-text;
+    }
+  }
+  .content {
+    @extend %content;
+
+    .highlight {
+      font-weight: bold;
+      color: #333;
+    }
+  }
+
+  /* message borders */
+  div {
+    border-top: 1px solid #dcdcdc;
+    
+    &.sender {
+      border-top: 1px solid transparent;
+    }
+  }
+}
+
+.message + .message.outgoing:first-child .sender {
+  border-top: 1px solid #efefef;
+}
+.message:last-child,
+.event:last-child {
+  border-bottom: 1px solid #dcdcdc;
+}
+.message + .event .content,
+.message + .event .timestamp {
+  border-top: 1px solid #dcdcdc;
+}
+
+.event {
+  @extend %clearfix;
+  color: $grey-text-light;
+  font-size: 0.75em;
+  line-height: 1.5em;
+  font-style: italic;
+  word-wrap: break-word;
+  -khtml-line-break: after-white-space;
+  -khtml-nbsp-mode: space;
+
+  a {
+    color: $grey-text-light;
+  }
+
+  + .event {
+    margin-top: -4px; /* Un-do previous message's padding. */
+
+    > * {
+      padding-top: 0;
+    }
+  }
+}
+
+.event--timestamp {
+  padding-bottom: 0;
+  color: $grey-text-light;
+  font-style: normal;
+}
+
+.event:hover {
+  &,
+  & a,
+  & .event--timestamp {
+    color: $grey-text;
+  }
+}
+
+.event--reason {
+}
+
+#consecutiveInsert {
+  display: none;
+}

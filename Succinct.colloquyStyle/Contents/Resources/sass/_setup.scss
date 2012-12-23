@@ -1,0 +1,76 @@
+//
+// "base" partial
+//
+// To make it easier to use all variables and mixins in any Sass file in this
+// theme, each .scss file has a @import "base" declaration. And this _base.scss
+// file is in charge of importing all the other partials needed for the theme.
+//
+// This base partial is organized in this way:
+// - First we set any shared Sass variables.
+// - Next we import Compass plug-ins (Sass mixin libraries).
+// - Last we define our custom mixins for this theme.
+//
+
+
+// =============================================================================
+// Variables
+// =============================================================================
+
+//
+// Legacy IE support
+//
+$legacy-support-for-ie: false;
+
+
+// The following font family declarations are based on the Microsoft core web
+// fonts which are common fonts available on most computer systems. The DejaVu
+// and Nimbus Sans fonts are commonly available on Linux systems where the MS
+// fonts are less common. Tahoma and Helvetica are also widely available.
+//
+// A user's web browser will look at the comma-separated list and will
+// attempt to use each font in turn until it finds one that is available
+// on the user's computer. The final "generic" font (sans-serif, serif or
+// monospace) hints at what type of font to use if the web browser doesn't
+// find any of the fonts in the list.
+
+// First, let's create some font stacks.
+$lucida: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
+
+// For an explanation of why "sans-serif" is at the end of this list, see
+// http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+$courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+
+// Now create some variables for the font stacks we want to use on this site.
+$base-font-family: $lucida; // The font family set on the html element.
+$font-body:        $lucida;
+$font-monospace:   $courier;
+
+
+//
+// Colors, etc.
+//
+
+$grey-text:       #4b4b4b;
+$grey-text-light: #aaa;
+
+
+// =============================================================================
+// Partials to be shared with all .scss files.
+// =============================================================================
+
+@import "compass/utilities/general/clearfix"; // Better than Drupal's clearfix.
+@import "compass/css3";     // Use one CSS3 mixin instead of multiple vendor prefixes.
+
+
+// =============================================================================
+// Custom sass mixins
+// =============================================================================
+
+// Define the custom mixins for your project here.
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#defining_a_mixin
+
+@mixin hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
