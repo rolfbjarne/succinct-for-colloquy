@@ -1,97 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <script type="text/javascript">
 	function scrollToBottom() {
 		document.body.scrollTop = document.body.offsetHeight;
 	}
 </script>
-
-<style type="text/css">
-.debug {
-  display: none;
-  display: block;
-}
-
-#modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  opacity: 0.7;
-}
-
-#modalContent {
-  position: fixed;
-  top: 20px;
-  bottom: 50px;
-  left: 20px;
-  right: 20px;
-  border: 1px solid black;
-  padding: 20px;
-  background-color: white;
-  overflow: auto;
-}
-#modalClose {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  height: 30px;
-  padding: 0 20px;
-  border: 1px solid black;
-  border-top: none;
-  -webkit-border-bottom-left-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  line-height: 30px;
-  text-align: center;
-  background-color: white;
-}
-#modalOpen a,
-#modalClose a {
-  color: black;
-}
-#modalOpen {
-  position: fixed;
-  bottom: 0;
-  right: 20px;
-  height: 30px;
-  padding: 0 20px;
-  border: 1px solid black;
-  border-bottom: none;
-  -webkit-border-top-left-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-  line-height: 30px;
-  text-align: center;
-  background-color: white;
-}
-</style>
 </head>
 <body>
 
 <section id="contents"></section>
 
-<div id="modalOpen" class="debug"><a href="javascript:showModal();">Get Source</a></div>
-
+<div id="modal--open" class="debug"><a href="javascript:showModal();">Get Source</a></div>
 <div id="modal" class="debug">
-	<div id="modalOverlay"></div>
-	<div id="modalContent"></div>
-	<div id="modalClose"><a href="javascript:hideModal();">Close</a></div>
+	<div id="modal--overlay"></div>
+	<div id="modal--content"></div>
+	<div id="modal--close"><a href="javascript:hideModal();">Close</a></div>
 </div>
 
 <script type="text/javascript">
-  contents = document.getElementById('contents');
-	modal = document.getElementById('modal');
-	modalContent = document.getElementById('modalContent');
+	contents     = document.getElementById('contents');
+	modal        = document.getElementById('modal');
+	modalContent = document.getElementById('modal--content');
+	modalOpen    = document.getElementById('modal--open');
+
 	function showModal() {
 		var source = contents.innerHTML;
 		modalContent.innerHTML = source.replace(/\</g, '&lt;');
 		modal.style.display = 'block';
+		modalOpen.style.display = 'none';
 	};
 	function hideModal() {
 		modal.style.display = 'none';
+		modalOpen.style.display = 'block';
 	};
 	hideModal();
 </script>

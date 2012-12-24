@@ -163,3 +163,59 @@ a:hover {
 #consecutiveInsert {
   display: none;
 }
+
+#modal--overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.7;
+}
+
+#modal--content {
+  position: fixed;
+  top: 20px;
+  bottom: 50px;
+  left: 20px;
+  right: 20px;
+  border: 1px solid black;
+  padding: 20px;
+  background-color: white;
+  overflow: auto;
+}
+
+#modal--open, #modal--close {
+  position: fixed;
+  height: 30px;
+  right: 20px;
+  padding: 0 20px;
+  border: 1px solid black;
+  line-height: 30px;
+  text-align: center;
+  background-color: white;
+}
+
+#modal--open {
+  bottom: 0;
+  border-bottom: none;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#modal--close {
+  bottom: 20px;
+  border-top: none;
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#modal--open a,
+#modal--close a {
+  color: black;
+}
