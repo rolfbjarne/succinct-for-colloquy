@@ -54,8 +54,8 @@
 			</xsl:choose>
 		</xsl:variable>
 
-		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask"/>
-		
+		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask" />
+
 		<div id="{message[1]/@id | @id}" class="{$envelopeClasses}">
 			<span class="timestamp hidden">[</span>
 			<span class="timestamp">
@@ -72,7 +72,7 @@
 				<xsl:when test="message[1]/@action = 'yes' or @action = 'yes'">
 					<span class="hidden"><xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text></span>
 				</xsl:when>
-				<xsl:otherwise>	
+				<xsl:otherwise>
 					<span class="hidden">: </span>
 				</xsl:otherwise>
 			</xsl:choose>
@@ -104,7 +104,7 @@
 			<xsl:if test="string-length( reason )">
 				<span class="reason">
 					<xsl:text> (</xsl:text>
-					<xsl:apply-templates select="reason/child::node()" mode="copy"/>
+					<xsl:apply-templates select="reason/child::node()" mode="copy" />
 					<xsl:text>)</xsl:text>
 				</span>
 			</xsl:if>
@@ -148,34 +148,34 @@
 		<xsl:variable name='hour' select='substring($date, 12, 2)' />
 		<xsl:variable name='minute' select='substring($date, 15, 2)' />
 		<xsl:choose>
-		  <xsl:when test="contains($timeFormat,'H')">
-		    <!-- 24hr format -->
-		    <xsl:value-of select="concat($hour,':',$minute)" />
-		  </xsl:when>
-		  <xsl:otherwise>
-		    <!-- am/pm format -->
-		    <xsl:choose>
-		      <xsl:when test="number($hour) &gt; 12">
-			<xsl:value-of select="number($hour) - 12" />
-		      </xsl:when>
-		      <xsl:when test="number($hour) = 0">
-			<xsl:text>12</xsl:text>
-		      </xsl:when>
-		      <xsl:otherwise>
-			<xsl:value-of select="$hour" />
-		      </xsl:otherwise>
-		    </xsl:choose>
-		    <xsl:text>:</xsl:text>
-		    <xsl:value-of select="$minute" />
-		    <xsl:choose>
-		      <xsl:when test="number($hour) &gt;= 12">
-			<xsl:text>pm</xsl:text>
-		      </xsl:when>
-		      <xsl:otherwise>
-			<xsl:text>am</xsl:text>
-		      </xsl:otherwise>
-		    </xsl:choose>
-		  </xsl:otherwise>
+			<xsl:when test="contains($timeFormat,'H')">
+				<!-- 24hr format -->
+				<xsl:value-of select="concat($hour,':',$minute)" />
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- am/pm format -->
+				<xsl:choose>
+					<xsl:when test="number($hour) &gt; 12">
+						<xsl:value-of select="number($hour) - 12" />
+					</xsl:when>
+					<xsl:when test="number($hour) = 0">
+						<xsl:text>12</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$hour" />
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:text>:</xsl:text>
+				<xsl:value-of select="$minute" />
+				<xsl:choose>
+					<xsl:when test="number($hour) &gt;= 12">
+						<xsl:text>pm</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>am</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 </xsl:stylesheet>
