@@ -20,27 +20,27 @@
 		<xsl:variable name="envelopeClasses">
 			<xsl:text>message</xsl:text>
 			<xsl:if test="message[1]/@highlight = 'yes' or @highlight = 'yes'">
-				<xsl:text> highlight</xsl:text>
+				<xsl:text> message-highlight</xsl:text>
 			</xsl:if>
 			<xsl:if test="count( message ) &gt; 1">
 					<xsl:text> message-consecutive</xsl:text>
 			</xsl:if>
 			<xsl:choose>
 				<xsl:when test="sender/@self = 'yes' or ../sender/@self = 'yes'">
-					<xsl:text> outgoing</xsl:text>
+					<xsl:text> message-outgoing</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:text> incoming</xsl:text>
+					<xsl:text> messsage-incoming</xsl:text>
 				</xsl:otherwise>
 			</xsl:choose>
 			<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
-				<xsl:text> action</xsl:text>
+				<xsl:text> message-action</xsl:text>
 			</xsl:if>
 			<xsl:if test="message[1]/@type = 'notice' or @type = 'notice'">
-				<xsl:text> notice</xsl:text>
+				<xsl:text> message-notice</xsl:text>
 			</xsl:if>
 			<xsl:if test="message[1]/@ignored = 'yes' or @ignored = 'yes' or ../@ignored = 'yes'">
-				<xsl:text> ignore</xsl:text>
+				<xsl:text> message-ignore</xsl:text>
 			</xsl:if>
 		</xsl:variable>
 
@@ -59,7 +59,7 @@
 		<xsl:variable name="senderClasses">
 			<xsl:text>member</xsl:text>
 			<xsl:if test="sender/@self = 'yes' or ../sender/@self = 'yes'">
-				<xsl:text> self</xsl:text>
+				<xsl:text> member-self</xsl:text>
 			</xsl:if>
 		</xsl:variable>
 
