@@ -76,11 +76,11 @@
 
 		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask" />
 
-		<article id="{message[1]/@id | @id}" class="{$envelopeClasses}">
-			<p class="message--sender">
+		<article id="{message[1]/@id | @id}" class="{$envelopeClasses} table--row">
+			<p class="message--sender table--cell">
 				<a href="{$memberLink}" title="{$hostmask}" class="{$senderClasses}"><xsl:value-of select="sender | ../sender" /></a><span class="hidden">: </span>
 			</p>
-			<p class="message--content">
+			<p class="message--content table--cell">
 				<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
 					<xsl:text>• </xsl:text>
 					<a href="{$memberLink}" title="{$hostmask}" class="action {$senderClasses}">
@@ -97,7 +97,7 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</p>
-			<time class="message--timestamp" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
+			<time class="message--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
 		</article>
 
 		<xsl:apply-templates select="message[position() &gt; 1]" />
@@ -116,9 +116,9 @@
 			</xsl:call-template>
 		</xsl:variable>
 
-		<div class="event">
-			<p class="event--sender"></p>
-			<p class="event--content">
+		<div class="event table--row">
+			<p class="event--sender table--cell"></p>
+			<p class="event--content table--cell">
 				<xsl:apply-templates select="message/child::node()" mode="event" />
 				<xsl:if test="string-length( reason )">
 					<span class="event--reason">
@@ -128,7 +128,7 @@
 					</span>
 				</xsl:if>
 			</p>
-			<time class="event--timestamp" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
+			<time class="event--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
 		</div>
 	</xsl:template>
 
