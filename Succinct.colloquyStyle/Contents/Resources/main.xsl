@@ -78,19 +78,17 @@
 
 		<div id="{message[1]/@id | @id}" class="{$envelopeClasses}">
 			<span class="timestamp" datetime="{$datetime}"><xsl:value-of select="$timestamp" /></span>
-			<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
-				<span class="hidden">• </span>
-			</xsl:if>
-			<a href="{$memberLink}" title="{$hostmask}" class="{$senderClasses}"><xsl:value-of select="sender | ../sender" /></a>
-			<xsl:choose>
-				<xsl:when test="message[1]/@action = 'yes' or @action = 'yes'">
-					<span class="hidden"><xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text></span>
-				</xsl:when>
-				<xsl:otherwise>
-					<span class="hidden">: </span>
-				</xsl:otherwise>
-			</xsl:choose>
+			<p class="sender">
+				<a href="{$memberLink}" title="{$hostmask}" class="{$senderClasses}"><xsl:value-of select="sender | ../sender" /></a><span class="hidden">: </span>
+			</p>
 			<span class="message">
+				<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
+					<xsl:text>• </xsl:text>
+					<a href="{$memberLink}" title="{$hostmask}" class="action {$senderClasses}">
+						<xsl:value-of select="sender | ../sender" />
+					</a>
+					<xsl:text> </xsl:text>
+				</xsl:if>
 				<xsl:choose>
 					<xsl:when test="message[1]">
 						<xsl:apply-templates select="message[1]/child::node()" mode="copy" />
