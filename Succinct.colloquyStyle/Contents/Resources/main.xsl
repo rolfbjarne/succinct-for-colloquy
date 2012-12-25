@@ -189,10 +189,10 @@
 				<xsl:value-of select="$minute" />
 				<xsl:choose>
 					<xsl:when test="number($hour) &gt;= 12">
-						<xsl:text>pm</xsl:text>
+						<xsl:text>p</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text>am</xsl:text>
+						<xsl:text>a</xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>
