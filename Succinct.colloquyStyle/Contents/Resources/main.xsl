@@ -57,13 +57,11 @@
 		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask" />
 
 		<div id="{message[1]/@id | @id}" class="{$envelopeClasses}">
-			<span class="timestamp hidden">[</span>
 			<span class="timestamp">
 				<xsl:call-template name="short-time">
 					<xsl:with-param name="date" select="message[1]/@received | @received" />
 				</xsl:call-template>
 			</span>
-			<span class="timestamp hidden">] </span>
 			<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
 				<span class="hidden">• </span>
 			</xsl:if>
@@ -93,13 +91,11 @@
 
 	<xsl:template match="event">
 		<div class="event">
-			<span class="timestamp hidden">[</span>
 			<span class="timestamp">
 				<xsl:call-template name="short-time">
 					<xsl:with-param name="date" select="@occurred" />
 				</xsl:call-template>
 			</span>
-			<span class="timestamp hidden">] </span>
 			<xsl:apply-templates select="message/child::node()" mode="event" />
 			<xsl:if test="string-length( reason )">
 				<span class="reason">
