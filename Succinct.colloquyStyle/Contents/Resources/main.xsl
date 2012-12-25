@@ -26,7 +26,7 @@
 					<xsl:text> message-consecutive</xsl:text>
 			</xsl:if>
 			<xsl:choose>
-				<xsl:when test="sender/@self = 'yes'">
+				<xsl:when test="sender/@self = 'yes' or ../sender/@self = 'yes'">
 					<xsl:text> outgoing</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
