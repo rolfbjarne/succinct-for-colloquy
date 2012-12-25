@@ -41,6 +41,12 @@
 			</xsl:if>
 		</xsl:variable>
 
+		<xsl:variable name="datetime">
+			<xsl:call-template name="iso-datetime">
+				<xsl:with-param name="date" select="message[1]/@received | @received" />
+			</xsl:call-template>
+		</xsl:variable>
+
 		<xsl:variable name="timestamp">
 			<xsl:call-template name="short-time">
 				<xsl:with-param name="date" select="message[1]/@received | @received" />
@@ -71,7 +77,7 @@
 		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask" />
 
 		<div id="{message[1]/@id | @id}" class="{$envelopeClasses}">
-			<span class="timestamp"><xsl:value-of select="$timestamp" /></span>
+			<span class="timestamp" datetime="{$datetime}"><xsl:value-of select="$timestamp" /></span>
 			<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
 				<span class="hidden">• </span>
 			</xsl:if>
@@ -100,6 +106,12 @@
 	</xsl:template>
 
 	<xsl:template match="event">
+		<xsl:variable name="datetime">
+			<xsl:call-template name="iso-datetime">
+				<xsl:with-param name="date" select="@occurred" />
+			</xsl:call-template>
+		</xsl:variable>
+
 		<xsl:variable name="timestamp">
 			<xsl:call-template name="short-time">
 				<xsl:with-param name="date" select="@occurred" />
@@ -107,7 +119,7 @@
 		</xsl:variable>
 
 		<div class="event">
-			<span class="timestamp"><xsl:value-of select="$timestamp" /></span>
+			<span class="timestamp" datetime="{$datetime}"><xsl:value-of select="$timestamp" /></span>
 			<xsl:apply-templates select="message/child::node()" mode="event" />
 			<xsl:if test="string-length( reason )">
 				<span class="reason">
@@ -185,5 +197,14 @@
 				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="iso-datetime">
+		<xsl:param name="date" /> <!-- YYYY-MM-DD HH:MM:SS +/-HHMM -->
+		<xsl:variable name='day' select='substring($date, 1, 10)' />
+		<xsl:variable name='time' select='substring($date, 12, 8)' />
+		<xsl:variable name='offset' select='substring($date, 21, 5)' />
+		<!-- ISO 8601 format -->
+		<xsl:value-of select="$day" /><xsl:text>T</xsl:text><xsl:value-of select="$time" /><xsl:value-of select="$offset" />
 	</xsl:template>
 </xsl:stylesheet>
