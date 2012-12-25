@@ -41,6 +41,12 @@
 			</xsl:if>
 		</xsl:variable>
 
+		<xsl:variable name="timestamp">
+			<xsl:call-template name="short-time">
+				<xsl:with-param name="date" select="message[1]/@received | @received" />
+			</xsl:call-template>
+		</xsl:variable>
+
 		<xsl:variable name="senderClasses">
 			<xsl:text>member</xsl:text>
 			<xsl:if test="sender/@self = 'yes' or ../sender/@self = 'yes'">
@@ -65,11 +71,7 @@
 		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask" />
 
 		<div id="{message[1]/@id | @id}" class="{$envelopeClasses}">
-			<span class="timestamp">
-				<xsl:call-template name="short-time">
-					<xsl:with-param name="date" select="message[1]/@received | @received" />
-				</xsl:call-template>
-			</span>
+			<span class="timestamp"><xsl:value-of select="$timestamp" /></span>
 			<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
 				<span class="hidden">• </span>
 			</xsl:if>
@@ -98,12 +100,14 @@
 	</xsl:template>
 
 	<xsl:template match="event">
+		<xsl:variable name="timestamp">
+			<xsl:call-template name="short-time">
+				<xsl:with-param name="date" select="@occurred" />
+			</xsl:call-template>
+		</xsl:variable>
+
 		<div class="event">
-			<span class="timestamp">
-				<xsl:call-template name="short-time">
-					<xsl:with-param name="date" select="@occurred" />
-				</xsl:call-template>
-			</span>
+			<span class="timestamp"><xsl:value-of select="$timestamp" /></span>
 			<xsl:apply-templates select="message/child::node()" mode="event" />
 			<xsl:if test="string-length( reason )">
 				<span class="reason">
