@@ -18,10 +18,18 @@
 
 	<xsl:template match="envelope | message">
 		<xsl:variable name="envelopeClasses">
-			<xsl:text>envelope</xsl:text>
+			<xsl:text>message</xsl:text>
 			<xsl:if test="message[1]/@highlight = 'yes' or @highlight = 'yes'">
 				<xsl:text> highlight</xsl:text>
 			</xsl:if>
+			<xsl:choose>
+				<xsl:when test="sender/@self = 'yes'">
+					<xsl:text> outgoing</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text> incoming</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
 			<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
 				<xsl:text> action</xsl:text>
 			</xsl:if>
