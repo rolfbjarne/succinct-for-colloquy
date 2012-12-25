@@ -77,7 +77,6 @@
 		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask" />
 
 		<div id="{message[1]/@id | @id}" class="{$envelopeClasses}">
-			<span class="timestamp" datetime="{$datetime}"><xsl:value-of select="$timestamp" /></span>
 			<p class="sender">
 				<a href="{$memberLink}" title="{$hostmask}" class="{$senderClasses}"><xsl:value-of select="sender | ../sender" /></a><span class="hidden">: </span>
 			</p>
@@ -98,6 +97,7 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</span>
+			<span class="timestamp" datetime="{$datetime}"><xsl:value-of select="$timestamp" /></span>
 		</div>
 
 		<xsl:apply-templates select="message[position() &gt; 1]" />
@@ -117,7 +117,6 @@
 		</xsl:variable>
 
 		<div class="event">
-			<span class="timestamp" datetime="{$datetime}"><xsl:value-of select="$timestamp" /></span>
 			<xsl:apply-templates select="message/child::node()" mode="event" />
 			<xsl:if test="string-length( reason )">
 				<span class="reason">
@@ -126,6 +125,7 @@
 					<xsl:text>)</xsl:text>
 				</span>
 			</xsl:if>
+			<span class="timestamp" datetime="{$datetime}"><xsl:value-of select="$timestamp" /></span>
 		</div>
 	</xsl:template>
 
