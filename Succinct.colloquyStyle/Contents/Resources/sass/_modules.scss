@@ -143,6 +143,10 @@
     }
   }
 
+  &:first-child > * {
+    padding: 4px 10px;
+  }
+
   + .event .event--content,
   + .event .event--timestamp {
     position: relative;
