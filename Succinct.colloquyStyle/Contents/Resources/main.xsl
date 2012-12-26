@@ -28,9 +28,6 @@
 			<xsl:if test="message[1]/@highlight = 'yes' or @highlight = 'yes'">
 				<xsl:text> message-highlight</xsl:text>
 			</xsl:if>
-			<xsl:if test="count( message ) &gt; 1">
-					<xsl:text> message-consecutive</xsl:text>
-			</xsl:if>
 			<xsl:choose>
 				<xsl:when test="sender/@self = 'yes' or ../sender/@self = 'yes'">
 					<xsl:text> message-outgoing</xsl:text>
