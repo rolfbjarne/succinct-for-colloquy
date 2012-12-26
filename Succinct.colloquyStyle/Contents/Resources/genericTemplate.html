@@ -26,13 +26,21 @@
 
 	function showModal() {
 		var source = contents.innerHTML;
-		modalContent.innerHTML = source.replace(/\</g, '&lt;');
+		modalContent.innerHTML = source
+		  .replace(/\</g,             '&lt;')
+		  .replace(/\&lt;div/g,       '<br />&lt;div')
+		  .replace(/\&lt;\/div/g,     '<br />&lt;/div')
+		  .replace(/\&lt;article/g,   '<br />&nbsp;&nbsp;&lt;article')
+		  .replace(/\&lt;\/article/g, '<br />&nbsp;&nbsp;&lt;/article')
+		  .replace(/\&lt;p/g,         '<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;p')
+		  .replace(/\&lt;time/g,      '<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;time')
+		  .replace(/^<br \/>/,        '');
 		modal.style.display = 'block';
-		modalOpen.style.display = 'none';
+		modalOpen.style.visibility = 'hidden';
 	};
 	function hideModal() {
 		modal.style.display = 'none';
-		modalOpen.style.display = 'block';
+		modalOpen.style.visibility = 'visible';
 	};
 	hideModal();
 </script>
