@@ -1,28 +1,28 @@
+html {
+  font-family: $lucida;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+
 body {
-	margin: 0;
-	padding: 0;
-	color: #4b4b4b;
-	background-color: white;
-	font-family: $lucida;
-	font-size: 0.8em;
-	line-height: 1.5em;
+  margin: 0;
+  padding: 0;
+  color: $grey-text;
+  background-color: white;
 }
 
 img {
-	border: 0;
-	max-height: 300px;
-	max-width: 485px; /* Golden ratio ~ 485/300 */
+  border: 0;
+  max-height: 300px;
+  max-width: 485px; /* Golden ratio ~ 485/300 */
 }
 
-a:link {
-	color: #0033cc;
-}
-
+a:link,
 a:visited {
-	color: #0033cc;
+  color: $blue-text;
 }
 
 a:hover,
 a:focus {
-	text-shadow: rgba( 0, 0, 0, .3 ) 0 1px 1px;
+  text-shadow: rgba( 0, 0, 0, .3 ) 0 1px 1px;
 }
