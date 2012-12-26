@@ -1,17 +1,21 @@
+html {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+
 body {
   margin: 0;
   padding: 0;
   color: #4b4b4b;
   background-color: white;
-  font-family: "Lucida Grande";
-  font-size: 0.8em;
-  line-height: 1.5em;
 }
 
 img {
   border: 0;
   max-height: 300px;
-  max-width: 485px; /* Golden ratio ~ 485/300 */
+  max-width: 485px;
+  /* Golden ratio ~ 485/300 */
 }
 
 a:link {
@@ -22,146 +26,166 @@ a:visited {
   color: #0033cc;
 }
 
-a:hover {
-  text-shadow: rgba(0, 0, 0, .3) 0 1px 1px;
+a:hover,
+a:focus {
+  text-shadow: rgba(0, 0, 0, 0.3) 0 1px 1px;
 }
 
-.member {
+.table {
+  display: table;
+  width: 100%;
+}
+
+.table--row-group {
+  display: table-row-group;
+}
+
+.table--row {
+  display: table-row;
+}
+
+.table--cell {
+  display: table-cell;
+}
+
+.debug {
+  display: none;
+}
+
+/**
+ * Elements
+ */
+.member:link, .member:visited {
   color: #4b4b4b;
   text-decoration: none;
 }
-
-.member:hover {
+.member:hover, .member:focus {
   text-decoration: underline;
 }
 
-.message:after,
-.event:after {
-  content: ".";
-  display: block;
-  height: 0;
-  overflow: hidden;
-  clear: both;
-}
-
-.message.incoming,
-.event {
-  background: url(images/background-incoming.png) left top repeat-y;
-}
-
-.message.incoming.highlight {
-  background-color: #d9e7fb;
-}
-
-.message.outgoing {
-  background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
-}
-
-.message.notice {
-  color: #333;
-  background-color: #eeffee;
-}
-
-.timestamp {
-  float: right;
-  width: 70px;
-  padding: 4px 10px;
-  color: #666;
-  text-align: right;
-}
-
-.message .timestamp {
-  font-size: 0.75em;
-}
-
-.message .sender {
-  float: left;
-  width: 120px; /* 140 - 10 - 10 (padding) */
-  padding: 4px 10px;
-  text-align: right;
+.highlight {
   font-weight: bold;
-  text-shadow: rgba(255, 255, 255, 1) 1px 1px 0;
+  color: #333333;
+}
+
+.hidden {
+  display: none;
+}
+
+.table {
+  border-bottom: 1px solid #dddddd;
+}
+
+#consecutiveInsert {
+  display: none;
+}
+
+/**
+ * Areas
+ */
+.message--sender, .event--sender {
+  min-width: 120px;
+  border-right: 1px solid #dddddd;
+  background-color: #efefef;
+  font-weight: bold;
+  text-align: right;
+  text-shadow: white 1px 1px 0;
   word-wrap: break-word;
 }
 
-.message .sender a {
-  color: #333;
+.message--content, .event--content {
+  width: 100%;
+  /* Force the content as wide as possible. */
 }
 
-.message + .message .sender {
-  text-indent: -900px;
-  text-align: left;
+.message--timestamp, .event--timestamp {
+  font-size: 0.75rem;
+  text-align: right;
 }
 
-.message .content,
-.event .content {
-  margin-left: 140px;
-  margin-right: 70px;
+/**
+ * Messages
+ */
+.message > * {
   padding: 4px 10px;
 }
 
-.message .content .highlight {
-  font-weight: bold;
-  color: #333;
+.message-highlight {
+  background-color: #d9e7fb;
 }
 
-/* message borders */
-.message div {
-  border-top: 1px solid #dcdcdc;
+.message-outgoing {
+  background-color: #ffffcc;
 }
-.message div.sender {
+
+.message-notice {
+  background-color: #eeffee;
+}
+
+.message--sender {
   border-top: 1px solid transparent;
 }
-.envelope + .envelope .message.outgoing:first-child .sender {
+.message-outgoing .message--sender {
+  background-color: transparent;
+}
+.message-outgoing:first-child .message--sender {
   border-top: 1px solid #efefef;
 }
-.envelope:last-child,
-.event:last-child {
-  border-bottom: 1px solid #dcdcdc;
-}
-.envelope + .event .content,
-.envelope + .event .timestamp {
-  border-top: 1px solid #dcdcdc;
+
+.message + .message .message--sender .member {
+  display: none;
 }
 
+.message--content {
+  border-top: 1px solid #dddddd;
+}
+
+.message--timestamp {
+  border-top: 1px solid #dddddd;
+  color: #666666;
+}
+
+/**
+ * Events
+ */
 .event {
-  font-size: 0.75em;
-  line-height: 1.5em;
+  color: #aaaaaa;
+  font-size: 0.75rem;
+  line-height: 1.2rem;
+}
+.event a:link,
+.event a:visited {
+  color: #aaaaaa;
+}
+.event:hover, .event:hover a:link, .event:hover a:visited, .event:hover .event--timestamp {
+  color: #4b4b4b;
+}
+.event > * {
+  padding: 0 10px;
+}
+.envelope + .event > * {
+  padding: 4px 10px;
+}
+.event + .event .event--content,
+.event + .event .event--timestamp {
+  position: relative;
+  top: -4px;
+  /* Un-do previous message's bottom padding. */
+}
+
+.event--content {
   font-style: italic;
   word-wrap: break-word;
   -khtml-line-break: after-white-space;
   -khtml-nbsp-mode: space;
 }
 
-.event + .event {
-  margin-top: -4px; /* Un-do previous message's padding. */
+.envelope + .event .event--sender {
+  border-top: 1px solid transparent;
 }
-.event + .event div {
-  padding-top: 0;
-}
-
-.event .timestamp {
-  padding-bottom: 0;
-  font-style: normal;
-}
-
-.event,
-.event a,
-.event .timestamp {
-  color: #aaa;
-}
-
-.event:hover,
-.event:hover a,
-.event:hover .timestamp {
-  color: #4b4b4b;
-}
-
-.event .reason {
-}
-
-#consecutiveInsert {
-  display: none;
+.envelope + .event .event--content,
+.envelope + .event .event--timestamp {
+  border-top: 1px solid #dddddd;
 }
 
 #modal--overlay {
@@ -170,52 +194,50 @@ a:hover {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: #4b4b4b;
   opacity: 0.7;
 }
 
-#modal--content {
+#modal--content, #modal--open, #modal--close {
   position: fixed;
+  border: 1px solid #4b4b4b;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+
+#modal--content {
   top: 20px;
-  bottom: 50px;
+  bottom: 42.8px;
   left: 20px;
   right: 20px;
-  border: 1px solid black;
   padding: 20px;
-  background-color: white;
   overflow: auto;
 }
 
 #modal--open, #modal--close {
-  position: fixed;
-  height: 30px;
+  height: 22.8px;
   right: 20px;
-  padding: 0 20px;
-  border: 1px solid black;
-  line-height: 30px;
+  padding: 0 5px;
+  line-height: 23px;
   text-align: center;
-  background-color: white;
+}
+#modal--open a:link, #modal--close a:link,
+#modal--open a:visited,
+#modal--close a:visited {
+  color: #4b4b4b;
+  text-decoration: none;
 }
 
 #modal--open {
   bottom: 0;
   border-bottom: none;
-  -webkit-border-top-left-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
 #modal--close {
-  bottom: 20px;
-  border-top: none;
-  -webkit-border-bottom-left-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
+  bottom: 19px;
+  border-top: 1px solid #efefef;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-
-#modal--open a,
-#modal--close a {
-  color: black;
 }
