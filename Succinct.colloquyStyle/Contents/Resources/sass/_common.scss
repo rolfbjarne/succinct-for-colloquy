@@ -1,11 +1,12 @@
 //
-// "base" partial
+// "common" partial
 //
-// To make it easier to use all variables and mixins in any Sass file in this
-// theme, each .scss file has a @import "base" declaration. And this _base.scss
-// file is in charge of importing all the other partials needed for the theme.
+// To make it easier to use all variables and mixins in any Sass file, each
+// non-partial .scss file has a @import "common" declaration. And this
+// _common.scss file is in charge of importing all the other modules needed for
+// the theme.
 //
-// This base partial is organized in this way:
+// This common partial is organized in this way:
 // - First we set any shared Sass variables.
 // - Next we import Compass plug-ins (Sass mixin libraries).
 // - Last we define our custom mixins for this theme.
@@ -52,13 +53,22 @@ $font-monospace:   $courier;
 
 $grey-text:       #4b4b4b;
 $grey-text-light: #aaa;
+$grey-text-dark:  #333;
+$grey-text-med:   #666;
+$blue-text:       #0033cc;
+
+$grey-border:     #ddd;
+$bg-incoming:     #efefef;
+$bg-outgoing:     #ffffcc;
+$bg-highlight:    #d9e7fb;
+$bg-notice:       #eeffee;
 
 
 // =============================================================================
 // Partials to be shared with all .scss files.
 // =============================================================================
 
-@import "compass/utilities/general/clearfix"; // Better than Drupal's clearfix.
+@import "compass/support";  // Add Compass' IE and vendor prefix support variables.
 @import "compass/css3";     // Use one CSS3 mixin instead of multiple vendor prefixes.
 
 
