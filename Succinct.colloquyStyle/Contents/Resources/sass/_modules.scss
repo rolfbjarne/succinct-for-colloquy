@@ -1,12 +1,8 @@
-/**
- * Hide debug tools for normal usage.
- */
+//
+// Hide debug tools for normal usage.
+//
 .debug {
-//  display: none;
-}
-
-%clearfix {
-  @include pie-clearfix;
+  display: none;
 }
 
 %hide-text {
@@ -14,143 +10,168 @@
 }
 
 /**
- * Member links
+ * Elements
  */
 .member {
-  color: $grey-text;
-  text-decoration: none;
+  &:link,
+  &:visited {
+    color: $grey-text;
+    text-decoration: none;
+  }
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 }
 
-.message.incoming,
-.event {
-  background: url(images/background-incoming.png) left top repeat-y;
+.highlight {
+  font-weight: bold;
+  color: $grey-text-dark;
 }
 
-.timestamp {
-  float: right;
-  width: 70px;
-  padding: 4px 10px;
-  color: #666;
-  text-align: right;
+.hidden {
+  display: none;
 }
 
-%content {
-  margin-left: 140px;
-  margin-right: 70px;
-  padding: 4px 10px;
-}
-
-.message {
-  @extend %clearfix;
-
-  &.incoming.highlight {
-    background-color: #d9e7fb;
-  }
-
-  &.outgoing {
-    background: #ffffcc url(images/background-outgoing.png) left top repeat-y;
-  }
-
-  &.notice {
-    color: #333;
-    background-color: #eeffee;
-  }
-
-  .timestamp {
-    font-size: 0.75em;
-  }
-
-  .sender {
-    float: left;
-    width: 120px; /* 140 - 10 - 10 (padding) */
-    padding: 4px 10px;
-    text-align: right;
-    font-weight: bold;
-    text-shadow: rgba(255, 255, 255, 1) 1px 1px 0;
-    word-wrap: break-word;
-
-    a {
-      color: #333;
-    }
-    .message + & {
-      @extend %hide-text;
-    }
-  }
-  .content {
-    @extend %content;
-
-    .highlight {
-      font-weight: bold;
-      color: #333;
-    }
-  }
-
-  /* message borders */
-  div {
-    border-top: 1px solid #dcdcdc;
-    
-    &.sender {
-      border-top: 1px solid transparent;
-    }
-  }
-}
-
-.message + .message.outgoing:first-child .sender {
-  border-top: 1px solid #efefef;
-}
-.message:last-child,
-.event:last-child {
-  border-bottom: 1px solid #dcdcdc;
-}
-.message + .event .content,
-.message + .event .timestamp {
-  border-top: 1px solid #dcdcdc;
-}
-
-.event {
-  @extend %clearfix;
-  color: $grey-text-light;
-  font-size: 0.75em;
-  line-height: 1.5em;
-  font-style: italic;
-  word-wrap: break-word;
-  -khtml-line-break: after-white-space;
-  -khtml-nbsp-mode: space;
-
-  a {
-    color: $grey-text-light;
-  }
-
-  + .event {
-    margin-top: -4px; /* Un-do previous message's padding. */
-
-    > * {
-      padding-top: 0;
-    }
-  }
-}
-
-.event--timestamp {
-  padding-bottom: 0;
-  color: $grey-text-light;
-  font-style: normal;
-}
-
-.event:hover {
-  &,
-  & a,
-  & .event--timestamp {
-    color: $grey-text;
-  }
-}
-
-.event--reason {
+.table {
+  border-bottom: 1px solid $grey-border;
 }
 
 #consecutiveInsert {
   display: none;
+}
+
+/**
+ * Areas
+ */
+%sender {
+  min-width: 120px;
+  border-right: 1px solid $grey-border;
+  background-color: $bg-incoming;
+  font-weight: bold;
+  text-align: right;
+  text-shadow: rgba(255, 255, 255, 1) 1px 1px 0;
+  word-wrap: break-word;
+}
+
+%content {
+  width: 100%; /* Force the content as wide as possible. */
+}
+
+%timestamp {
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+/**
+ * Messages
+ */
+.message {
+  > * {
+    padding: 4px 10px;
+  }
+}
+
+.message-highlight {
+  background-color: $bg-highlight;
+}
+
+.message-outgoing {
+  background-color: $bg-outgoing;
+}
+
+.message-notice {
+  background-color: $bg-notice;
+}
+
+.message--sender {
+  @extend %sender;
+  border-top: 1px solid transparent;
+
+  .message-outgoing & {
+    background-color: transparent;
+  }
+
+  .message-outgoing:first-child & {
+    border-top: 1px solid $bg-incoming;
+  }
+}
+
+.message + .message .message--sender .member {
+  display: none;
+}
+
+.message--content {
+  @extend %content;
+  border-top: 1px solid $grey-border;
+}
+
+.message--timestamp {
+  @extend %timestamp;
+  border-top: 1px solid $grey-border;
+  color: $grey-text-med;
+}
+
+/**
+ * Events
+ */
+.event {
+  color: $grey-text-light;
+  font-size: 0.75rem;
+  line-height: 1.2rem;
+
+  a:link,
+  a:visited {
+    color: $grey-text-light;
+  }
+
+  &:hover {
+    &,
+    & a:link,
+    & a:visited,
+    & .event--timestamp {
+      color: $grey-text;
+    }
+  }
+
+  > * {
+    padding: 0 10px;
+
+    .envelope + & {
+      padding: 4px 10px;
+    }
+  }
+
+  + .event .event--content,
+  + .event .event--timestamp {
+    position: relative;
+    top: -4px; /* Un-do previous message's bottom padding. */
+  }
+}
+
+.event--sender {
+  @extend %sender;
+}
+
+.event--content {
+  @extend %content;
+  font-style: italic;
+  word-wrap: break-word;
+  -khtml-line-break: after-white-space;
+  -khtml-nbsp-mode: space;
+}
+
+.event--timestamp {
+  @extend %timestamp;
+}
+
+.envelope + .event {
+  .event--sender {
+    border-top: 1px solid transparent;
+  }
+  .event--content,
+  .event--timestamp {
+    border-top: 1px solid $grey-border;
+  }
 }
