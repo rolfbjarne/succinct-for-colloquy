@@ -51,13 +51,14 @@ $font-monospace:   $courier;
 // Colors, etc.
 //
 
-$grey-text:       #4b4b4b;
+$grey-border:     #ddd;
 $grey-text-light: #aaa;
-$grey-text-dark:  #333;
 $grey-text-med:   #666;
+$grey-text:       #4b4b4b;
+$grey-text-dark:  #333;
+
 $blue-text:       #0033cc;
 
-$grey-border:     #ddd;
 $bg-incoming:     #efefef;
 $bg-outgoing:     #ffffcc;
 $bg-highlight:    #d9e7fb;
