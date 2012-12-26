@@ -16,7 +16,13 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="envelope | message">
+	<xsl:template match="envelope">
+		<div class="envelope table--row-group">
+			<xsl:apply-templates select="message" />
+		</div>
+	</xsl:template>
+
+	<xsl:template match="message">
 		<xsl:variable name="envelopeClasses">
 			<xsl:text>message</xsl:text>
 			<xsl:if test="message[1]/@highlight = 'yes' or @highlight = 'yes'">
