@@ -127,7 +127,7 @@
 			<p class="event--content table--cell">
 				<xsl:apply-templates select="message/child::node()" mode="event" />
 				<xsl:if test="string-length( reason )">
-					<span class="event--reason">
+					<span class="event--reason reason">
 						<xsl:text> (</xsl:text>
 						<xsl:apply-templates select="reason/child::node()" mode="copy" />
 						<xsl:text>)</xsl:text>
