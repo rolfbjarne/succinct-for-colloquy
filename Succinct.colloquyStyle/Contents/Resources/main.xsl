@@ -217,7 +217,7 @@
 						<xsl:text>12</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:value-of select="$hour" />
+						<xsl:value-of select="number($hour)" />
 					</xsl:otherwise>
 				</xsl:choose>
 				<xsl:text>:</xsl:text>
