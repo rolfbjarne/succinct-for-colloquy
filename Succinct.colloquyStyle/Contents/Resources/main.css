@@ -1,6 +1,6 @@
 html {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
-  font-size: 13px;
+  font-size: 81.25%;
   line-height: 1.5em;
 }
 
@@ -164,6 +164,9 @@ a:focus {
   padding: 0 10px;
 }
 .envelope + .event > * {
+  padding: 4px 10px;
+}
+.event:first-child > * {
   padding: 4px 10px;
 }
 .event + .event .event--content,
