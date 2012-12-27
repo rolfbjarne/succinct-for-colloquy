@@ -17,84 +17,92 @@
 	<key>JVStyleOptions</key>
 	<array>
 		<dict>
-			<key>default</key>
-			<string>#0033cc</string>
 			<key>description</key>
-			<string>Visited links</string>
-			<key>style</key>
-			<string>a:visited { color: %@; }</string>
+			<string>Display events</string>
 			<key>type</key>
-			<string>color</string>
+			<string>list</string>
+			<key>options</key>
+			<array>
+				<string>Yes</string>
+				<string>No</string>
+			</array>
+			<key>default</key>
+			<integer>1</integer>
+			<key>style</key>
+			<array>
+				<string>/* Display events */ .event { display: table-row; }</string>
+				<string>/* Display events */ .event { display: none; }</string>
+			</array>
 		</dict>
 		<dict>
-			<key>default</key>
-			<string>#333333</string>
-			<key>description</key>
-			<string>Nickname text</string>
-			<key>style</key>
-			<string>.message .sender a { color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>#666666</string>
-			<key>description</key>
-			<string>Timestamp text</string>
-			<key>style</key>
-			<string>.timestamp { color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>#aaaaaa</string>
 			<key>description</key>
 			<string>Event text</string>
-			<key>style</key>
-			<string>.event, .event a, .event .timestamp { color: %@ !important; }</string>
 			<key>type</key>
 			<string>color</string>
-		</dict>
-		<dict>
 			<key>default</key>
-			<string>#d9e7fb</string>
-			<key>description</key>
-			<string>Highlighted messages</string>
+			<string>#aaaaaa</string>
 			<key>style</key>
-			<string>.message.incoming.highlight { background-color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
+			<string>/* Event text */ .event, .event a:link, .event a:visited { color: %@; }</string>
 		</dict>
 		<dict>
+			<key>description</key>
+			<string>Nickname text</string>
+			<key>type</key>
+			<string>color</string>
 			<key>default</key>
-			<string>#eeffee</string>
-			<key>description</key>
-			<string>Notices</string>
+			<string>#4b4b4b</string>
 			<key>style</key>
-			<string>.message.notice { background-color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
+			<string>/* Nickname text */ .member:link, .member:visited { color: %@; }</string>
 		</dict>
 		<dict>
+			<key>description</key>
+			<string>Nickname background</string>
+			<key>type</key>
+			<string>color</string>
 			<key>default</key>
-			<string>#ffffff</string>
-			<key>description</key>
-			<string>Actions</string>
+			<string>#efefef</string>
 			<key>style</key>
-			<string>.message.action { background-color: %@ !important; }</string>
-			<key>type</key>
-			<string>color</string>
+			<string>/* Nickname background */ .message--sender, .event--sender { background-color: %@; } .message-outgoing:first-child .message--sender { border-top-color: %@; }</string>
 		</dict>
 		<dict>
+			<key>description</key>
+			<string>Your nickname background</string>
+			<key>type</key>
+			<string>color</string>
+			<key>default</key>
+			<string>rgba( 255, 255, 204, 0.0 )</string>
+			<key>style</key>
+			<string>/* Your nickname background */ .message-outgoing .message--sender { background-color: %@; }</string>
+		</dict>
+		<dict>
+			<key>description</key>
+			<string>Your messages background</string>
+			<key>type</key>
+			<string>color</string>
 			<key>default</key>
 			<string>#ffffcc</string>
-			<key>description</key>
-			<string>Your messages</string>
 			<key>style</key>
-			<string>.message.outgoing { background-color: %@ !important; }</string>
+			<string>/* Your messages background */ .message-outgoing { background-color: %@; }</string>
+		</dict>
+		<dict>
+			<key>description</key>
+			<string>Highlighted messages background</string>
 			<key>type</key>
 			<string>color</string>
+			<key>default</key>
+			<string>#d9e7fb</string>
+			<key>style</key>
+			<string>/* Highlighted messages background */ .message-highlight { background-color: %@; }</string>
+		</dict>
+		<dict>
+			<key>description</key>
+			<string>Notices background</string>
+			<key>type</key>
+			<string>color</string>
+			<key>default</key>
+			<string>#eeffee</string>
+			<key>style</key>
+			<string>/* Notices background */ .message-notice { background-color: %@; }</string>
 		</dict>
 	</array>
 	<key>NSHumanReadableCopyright</key>
