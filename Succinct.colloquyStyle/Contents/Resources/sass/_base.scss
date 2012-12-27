@@ -1,6 +1,5 @@
 html {
-  font-family: $lucida;
-  font-size: (13px / 16px) * 100%;
+  font-size: (13px / $colloquy-default-font-size) * 100%;
   line-height: 1.5em;
 }
 
