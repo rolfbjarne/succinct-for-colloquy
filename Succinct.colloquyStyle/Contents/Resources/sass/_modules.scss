@@ -113,6 +113,10 @@
   color: $grey-text-med;
 }
 
+.envelope:first-child .message:first-child > * {
+  border-top: none;
+}
+
 /**
  * Events
  */
