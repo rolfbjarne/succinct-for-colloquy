@@ -160,19 +160,16 @@ a:focus {
   color: #4b4b4b;
 }
 .event > * {
+  padding: 4px 10px;
+}
+.event + .event > * {
   padding: 0 10px;
-}
-.envelope + .event > * {
-  padding: 4px 10px;
-}
-.event:first-child > * {
-  padding: 4px 10px;
-}
-.event + .event .event--content,
-.event + .event .event--timestamp {
   position: relative;
   top: -4px;
-  /* Un-do previous message's bottom padding. */
+  /* Un-do first event's bottom padding. */
+}
+.event + .event .event--sender {
+  top: 0;
 }
 
 .event--content {
