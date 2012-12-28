@@ -1,6 +1,12 @@
-Succinct 2.0, 20xx
+Succinct 2.0, 2012-xx
 ------------------------
-- 
+- Bug fix: Messages sometimes out of order in Colloquy 2.4
+- Bug fix: Timestamp doesn't respect system-wide time format
+- Bug fix: 12-hour time format has leading zero for AM times
+- Improved flexibility of style customization
+- Allow nickname background color to be changed
+- Make default Succinct font size relative to Colloquy default font size of 11px
+- Now uses HTML5 elements -- like anyone cares ;-)
 
 Succinct 1.0, 2010-11-10
 ------------------------
