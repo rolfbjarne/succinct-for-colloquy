@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
-<xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output omit-xml-declaration="yes" indent="no" />
 	<xsl:param name="consecutiveMessage" />
 	<xsl:param name="bulkTransform" />
@@ -8,7 +7,9 @@
 	<xsl:template match="/">
 		<xsl:choose>
 			<xsl:when test="$consecutiveMessage = 'yes'">
-				<xsl:apply-templates select="/envelope/message[last()]" />
+				<xsl:apply-templates select="/envelope/message[last()]" mode="consecutive">
+					<xsl:with-param name="fromEnvelope" select="'no'" />
+				</xsl:apply-templates>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:apply-templates />
@@ -16,97 +17,190 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="envelope">
-		<div class="envelope table--row-group">
-			<xsl:apply-templates select="message" />
-		</div>
+	<xsl:template match="message" mode="consecutive">
+		<xsl:param name="fromEnvelope" select="'no'" />
+
+		<xsl:choose>
+			<xsl:when test="not( $consecutiveMessage = 'yes' ) and $fromEnvelope = 'no' and count( ../message[not( @ignored = 'yes' )] ) = 1 and not( @ignored = 'yes' )">
+				<xsl:apply-templates select=".." />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:if test="not( @ignored = 'yes' ) and not( ../@ignored = 'yes' )">
+					<xsl:variable name="messageClasses">
+						<xsl:text>message</xsl:text>
+						<xsl:if test="@highlight = 'yes'">
+							<xsl:text> message-highlight</xsl:text>
+						</xsl:if>
+						<xsl:choose>
+							<xsl:when test="../sender/@self = 'yes'">
+								<xsl:text> message-outgoing</xsl:text>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> messsage-incoming</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+						<xsl:if test="@action = 'yes'">
+							<xsl:text> message-action</xsl:text>
+						</xsl:if>
+						<xsl:if test="@type = 'notice'">
+							<xsl:text> message-notice</xsl:text>
+						</xsl:if>
+						<xsl:if test="@ignored = 'yes' or ../@ignored = 'yes'">
+							<xsl:text> message-ignore</xsl:text>
+						</xsl:if>
+					</xsl:variable>
+
+					<xsl:variable name="datetime">
+						<xsl:call-template name="iso-datetime">
+							<xsl:with-param name="date" select="@received" />
+						</xsl:call-template>
+					</xsl:variable>
+
+					<xsl:variable name="timestamp">
+						<xsl:call-template name="short-time">
+							<xsl:with-param name="date" select="@received" />
+						</xsl:call-template>
+					</xsl:variable>
+
+					<xsl:variable name="memberClasses">
+						<xsl:text>member</xsl:text>
+						<xsl:if test="../sender/@self = 'yes'">
+							<xsl:text> member-self</xsl:text>
+						</xsl:if>
+					</xsl:variable>
+
+					<xsl:variable name="memberLink">
+						<xsl:choose>
+							<xsl:when test="../sender/@identifier">
+								<xsl:text>member:identifier:</xsl:text><xsl:value-of select="../sender/@identifier" />
+							</xsl:when>
+							<xsl:when test="../sender/@nickname">
+								<xsl:text>member:</xsl:text><xsl:value-of select="../sender/@nickname" />
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text>member:</xsl:text><xsl:value-of select="../sender" />
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+
+					<xsl:variable name="hostmask" select="../sender/@hostmask" />
+
+					<article id="{@id}" class="{$messageClasses} table--row">
+						<p class="message--sender table--cell">
+							<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="../sender" /></a><span class="hidden">: </span>
+						</p>
+						<p class="message--content table--cell">
+							<xsl:if test="@action = 'yes'">
+								<xsl:text>• </xsl:text>
+								<a href="{$memberLink}" title="{$hostmask}" class="action {$memberClasses}">
+									<xsl:value-of select="../sender" />
+								</a>
+								<xsl:text> </xsl:text>
+							</xsl:if>
+							<xsl:apply-templates select="child::node()" mode="copy" />
+						</p>
+						<time class="message--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
+					</article>
+
+					<xsl:if test="not( $bulkTransform = 'yes' )">
+						<xsl:if test="$fromEnvelope = 'no'">
+							<xsl:processing-instruction name="message">type="consecutive"</xsl:processing-instruction>
+						</xsl:if>
+						<div id="consecutiveInsert"><xsl:text> </xsl:text></div>
+					</xsl:if>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="message">
-		<xsl:variable name="envelopeClasses">
-			<xsl:text>message</xsl:text>
-			<xsl:if test="message[1]/@highlight = 'yes' or @highlight = 'yes'">
-				<xsl:text> message-highlight</xsl:text>
-			</xsl:if>
-			<xsl:choose>
-				<xsl:when test="sender/@self = 'yes' or ../sender/@self = 'yes'">
-					<xsl:text> message-outgoing</xsl:text>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text> messsage-incoming</xsl:text>
-				</xsl:otherwise>
-			</xsl:choose>
-			<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
-				<xsl:text> message-action</xsl:text>
-			</xsl:if>
-			<xsl:if test="message[1]/@type = 'notice' or @type = 'notice'">
-				<xsl:text> message-notice</xsl:text>
-			</xsl:if>
-			<xsl:if test="message[1]/@ignored = 'yes' or @ignored = 'yes' or ../@ignored = 'yes'">
-				<xsl:text> message-ignore</xsl:text>
-			</xsl:if>
-		</xsl:variable>
-
-		<xsl:variable name="datetime">
-			<xsl:call-template name="iso-datetime">
-				<xsl:with-param name="date" select="message[1]/@received | @received" />
-			</xsl:call-template>
-		</xsl:variable>
-
-		<xsl:variable name="timestamp">
-			<xsl:call-template name="short-time">
-				<xsl:with-param name="date" select="message[1]/@received | @received" />
-			</xsl:call-template>
-		</xsl:variable>
-
-		<xsl:variable name="senderClasses">
-			<xsl:text>member</xsl:text>
-			<xsl:if test="sender/@self = 'yes' or ../sender/@self = 'yes'">
-				<xsl:text> member-self</xsl:text>
-			</xsl:if>
-		</xsl:variable>
-
-		<xsl:variable name="memberLink">
-			<xsl:choose>
-				<xsl:when test="sender/@identifier or ../sender/@identifier">
-					<xsl:text>member:identifier:</xsl:text><xsl:value-of select="sender/@identifier | ../sender/@identifier" />
-				</xsl:when>
-				<xsl:when test="sender/@nickname or ../sender/@nickname">
-					<xsl:text>member:</xsl:text><xsl:value-of select="sender/@nickname | ../sender/@nickname" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text>member:</xsl:text><xsl:value-of select="sender | ../sender" />
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-
-		<xsl:variable name="hostmask" select="sender/@hostmask | ../sender/@hostmask" />
-
-		<article id="{message[1]/@id | @id}" class="{$envelopeClasses} table--row">
-			<p class="message--sender table--cell">
-				<a href="{$memberLink}" title="{$hostmask}" class="{$senderClasses}"><xsl:value-of select="sender | ../sender" /></a><span class="hidden">: </span>
-			</p>
-			<p class="message--content table--cell">
-				<xsl:if test="message[1]/@action = 'yes' or @action = 'yes'">
-					<xsl:text>• </xsl:text>
-					<a href="{$memberLink}" title="{$hostmask}" class="action {$senderClasses}">
-						<xsl:value-of select="sender | ../sender" />
-					</a>
-					<xsl:text> </xsl:text>
+	<xsl:template match="envelope">
+		<xsl:if test="not( @ignored = 'yes' ) and count( message[not( @ignored = 'yes' )] ) &gt;= 1">
+			<xsl:variable name="messageClasses">
+				<xsl:text>message</xsl:text>
+				<xsl:if test="message[not( @ignored = 'yes' )][1]/@highlight = 'yes'">
+					<xsl:text> message-highlight</xsl:text>
 				</xsl:if>
 				<xsl:choose>
-					<xsl:when test="message[1]">
-						<xsl:apply-templates select="message[1]/child::node()" mode="copy" />
+					<xsl:when test="sender/@self = 'yes'">
+						<xsl:text> message-outgoing</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates select="child::node()" mode="copy" />
+						<xsl:text> messsage-incoming</xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
-			</p>
-			<time class="message--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
-		</article>
+				<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
+					<xsl:text> message-action</xsl:text>
+				</xsl:if>
+				<xsl:if test="message[not( @ignored = 'yes' )][1]/@type = 'notice'">
+					<xsl:text> message-notice</xsl:text>
+				</xsl:if>
+				<xsl:if test="message[not( @ignored = 'yes' )][1]/@ignored = 'yes' or @ignored = 'yes'">
+					<xsl:text> message-ignore</xsl:text>
+				</xsl:if>
+			</xsl:variable>
 
-		<xsl:apply-templates select="message[position() &gt; 1]" />
+			<xsl:variable name="datetime">
+				<xsl:call-template name="iso-datetime">
+					<xsl:with-param name="date" select="message[not( @ignored = 'yes' )][1]/@received" />
+				</xsl:call-template>
+			</xsl:variable>
+
+			<xsl:variable name="timestamp">
+				<xsl:call-template name="short-time">
+					<xsl:with-param name="date" select="message[not( @ignored = 'yes' )][1]/@received" />
+				</xsl:call-template>
+			</xsl:variable>
+
+			<xsl:variable name="memberClasses">
+				<xsl:text>member</xsl:text>
+				<xsl:if test="sender/@self = 'yes'">
+					<xsl:text> member-self</xsl:text>
+				</xsl:if>
+			</xsl:variable>
+
+			<xsl:variable name="memberLink">
+				<xsl:choose>
+					<xsl:when test="sender/@identifier">
+						<xsl:text>member:identifier:</xsl:text><xsl:value-of select="sender/@identifier" />
+					</xsl:when>
+					<xsl:when test="sender/@nickname">
+						<xsl:text>member:</xsl:text><xsl:value-of select="sender/@nickname" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>member:</xsl:text><xsl:value-of select="sender" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+
+			<xsl:variable name="hostmask" select="sender/@hostmask" />
+
+			<div class="envelope table--row-group">
+				<article id="{message[not( @ignored = 'yes' )][1]/@id}" class="{$messageClasses} table--row">
+					<p class="message--sender table--cell">
+						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a><span class="hidden">: </span>
+					</p>
+					<p class="message--content table--cell">
+						<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
+							<xsl:text>• </xsl:text>
+							<a href="{$memberLink}" title="{$hostmask}" class="action {$memberClasses}">
+								<xsl:value-of select="sender" />
+							</a>
+							<xsl:text> </xsl:text>
+						</xsl:if>
+						<xsl:apply-templates select="message[not( @ignored = 'yes' )][1]/child::node()" mode="copy" />
+					</p>
+					<time class="message--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
+				</article>
+
+				<xsl:apply-templates select="message[not( @ignored = 'yes' )][position() &gt; 1]" mode="consecutive">
+					<xsl:with-param name="fromEnvelope" select="'yes'" />
+				</xsl:apply-templates>
+				<xsl:if test="position() = last()">
+					<div id="consecutiveInsert"><xsl:text> </xsl:text></div>
+				</xsl:if>
+
+			</div>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="event">
@@ -171,7 +265,7 @@
 		<xsl:choose>
 			<xsl:when test="../../node()[node() = $nickname]/@hostmask">
 				<xsl:variable name="hostmask" select="../../node()[node() = $nickname]/@hostmask" />
-				<a href="member:{$nickname}" title="{$hostmask}" class="member"><xsl:copy-of select="@*" /><xsl:apply-templates select="current()/child::node()" mode="copy" /></a>
+				<a href="member:{$nickname}" title="{$hostmask}" class="member"><xsl:copy-of select="@*" /><xsl:value-of select="$nickname" /></a>
 				<xsl:if test="../../@name = 'memberJoined' or ../../@name = 'memberParted'">
 					<span class="hostmask">
 						<xsl:text> (</xsl:text>
@@ -242,4 +336,4 @@
 		<!-- ISO 8601 format -->
 		<xsl:value-of select="$day" /><xsl:text>T</xsl:text><xsl:value-of select="$time" /><xsl:value-of select="$offset" />
 	</xsl:template>
-</xsl:stylesheet>
+</xsl:transform>
