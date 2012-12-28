@@ -136,21 +136,18 @@
   }
 
   > * {
-    padding: 0 10px;
-
-    .envelope + & {
-      padding: 4px 10px;
-    }
-  }
-
-  &:first-child > * {
     padding: 4px 10px;
   }
 
-  + .event .event--content,
-  + .event .event--timestamp {
-    position: relative;
-    top: -4px; /* Un-do previous message's bottom padding. */
+  + .event {
+    > * {
+      padding: 0 10px;
+      position: relative;
+      top: -4px; /* Un-do first event's bottom padding. */
+    }
+    .event--sender {
+      top: 0;
+    }
   }
 }
 
