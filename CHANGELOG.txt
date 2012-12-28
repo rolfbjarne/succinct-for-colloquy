@@ -1,4 +1,4 @@
-Succinct 2.0, 2012-xx
+Succinct 2.0, 2012-12-29
 ------------------------
 - Bug fix: Messages sometimes out of order in Colloquy 2.4
 - Bug fix: Timestamp doesn't respect system-wide time format
