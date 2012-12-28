@@ -27,7 +27,7 @@
 				<string>No</string>
 			</array>
 			<key>default</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>style</key>
 			<array>
 				<string>/* Display events */ .event { display: table-row; }</string>
