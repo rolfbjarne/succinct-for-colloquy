@@ -23,14 +23,19 @@ Installation
    of Succinct from the "tags" pages on GitHub:
    https://github.com/JohnAlbin/succinct-for-colloquy/tags
 
-2. Double-click the succinct-for-colloquy-2.0.zip file. Open the newly created
-   succinct-for-colloquy-2.0 folder and double-click the Succinct.colloquyStyle
-   file to install the style.
+2. Double-click the succinct-for-colloquy-2.0.zip file and open the newly
+   created succinct-for-colloquy-2.0 folder.
 
-3. Start or re-start Colloquy. (Typing "/reload style" in a Colloquy chat window
-   may work, but is inconsistently buggy.)
+3. Open a new Finder window and select "Go to Folder..." from the "Go" menu. In
+   the dialog pane that appears, enter:
+     ~/Library/Application Support/Colloquy/Styles
 
-4. To change the style of one chatroom/channel, select the "Succinct" option
+4. Copy the file Succinct.colloquyStyle file from Step 2 to the Styles folder
+   from Step 3.
+
+5. Start or re-start Colloquy.
+
+6. To change the style of one chatroom/channel, select the "Succinct" option
    from the Style drop-down menu. Or, to set Succinct as your default Colloquy
    chat style, choose the "Appearance Preferences..." option from the Style
    drop-down menu. (Where you can can also choose to customize the colors via
