@@ -1,4 +1,4 @@
-Colloquy (<http://colloquy.info>) is a very nice IRC application for Mac OS X. The included chat styles, however, are in need of some serious design and usability work. Succinct is an add-on style for Colloquy that is inspired by 37signals's Campfire design but re-purposed for IRC communication.
+Colloquy (<http://colloquy.info>) is a very nice IRC application for Mac OS X, but its included chat styles are in need of some serious design and usability work. Succinct is an add-on style that is designed to be the "missing style" for Colloquy and is inspired by 37signals's Campfire design, but re-purposed for IRC communication.
 
 
 Four reasons to love "Succinct" for Colloquy
