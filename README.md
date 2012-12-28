@@ -1,7 +1,7 @@
-Colloquy (<http://colloquy.info>) is a very nice IRC client for Mac OS X. It does, however, need some serious help in the area of useful chat styles.
+Colloquy (<http://colloquy.info>) is a very nice IRC application for Mac OS X. The included chat styles, however, are in need of some serious design and usability work. Succinct is an add-on style for Colloquy that is inspired by 37signals's Campfire design but re-purposed for IRC communication.
 
 
-Four reasons to love “Succinct” for Colloquy
+Four reasons to love "Succinct" for Colloquy
 --------------------------------------------
 
 1. Simple clean design.
@@ -15,14 +15,17 @@ Four reasons to love “Succinct” for Colloquy
 Installation
 ------------
 
-1. Copy the Succinct.colloquyStyle file to this folder in your home folder:
+1. After you have downloaded and installed Colloquy, download the latest version of Succinct from the "tags" pages on GitHub:
+   https://github.com/JohnAlbin/succinct-for-colloquy/tags
+
+2. Double-click the succinct-for-colloquy-2.0.zip file. Open the newly created succinct-for-colloquy-2.0 folder and double-click the Succinct.colloquyStyle file to install the style.
+
+Copy the Succinct.colloquyStyle file to this folder in your home folder:
      Library -> Application Support -> Colloquy -> Styles
 
-2. Start or re-start Colloquy. (Typing "/reload styles" in a Colloquy chat window may work, but is buggy.)
+3. Start or re-start Colloquy. (Typing "/reload style" in a Colloquy chat window may work, but is inconsistently buggy.)
 
-3. Select the “Succinct” option from the Style drop-down.
-
-4. Choose the “Appearance Preferences…” to set Succinct as your default Colloquy chat style or to customize the colors via its “Customize Style…” button.
+4. To change the style of one chatroom/channel, select the "Succinct" option from the Style drop-down menu. Or, to set Succinct as your default Colloquy chat style, choose the "Appearance Preferences..." option from the Style drop-down menu. (Where you can can also choose to customize the colors via the "Customize Style..." button.)
 
 
 Contributors
