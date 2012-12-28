@@ -20,9 +20,6 @@ Installation
 
 2. Double-click the succinct-for-colloquy-2.0.zip file. Open the newly created succinct-for-colloquy-2.0 folder and double-click the Succinct.colloquyStyle file to install the style.
 
-Copy the Succinct.colloquyStyle file to this folder in your home folder:
-     Library -> Application Support -> Colloquy -> Styles
-
 3. Start or re-start Colloquy. (Typing "/reload style" in a Colloquy chat window may work, but is inconsistently buggy.)
 
 4. To change the style of one chatroom/channel, select the "Succinct" option from the Style drop-down menu. Or, to set Succinct as your default Colloquy chat style, choose the "Appearance Preferences..." option from the Style drop-down menu. (Where you can can also choose to customize the colors via the "Customize Style..." button.)
