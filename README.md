@@ -19,27 +19,38 @@ Four reasons to love "Succinct" for Colloquy
 Installation
 ------------
 
-1. After you have downloaded and installed Colloquy, download the latest version
-   of Succinct from the "tags" pages on GitHub:
+All Colloquy styles need to be placed in your home directory's Library folder at
+~/Library/Application Support/Colloquy/Styles. New styles become available after
+you restart Colloquy.
+
+1. After you have downloaded, installed and started Colloquy, download the
+   latest version of the Succinct style from the "tags" page on GitHub:
    https://github.com/JohnAlbin/succinct-for-colloquy/tags
 
-2. Double-click the succinct-for-colloquy-2.0.zip file and open the newly
-   created succinct-for-colloquy-2.0 folder.
+2. Double-click the downloaded .zip (or .tar.gz) file and open the newly
+   created succinct-for-colloquy folder to find the Succinct.colloquyStyle file.
 
-3. Open a new Finder window and select "Go to Folder..." from the "Go" menu. In
-   the dialog pane that appears, enter:
+3. Open an additional Finder window and, from the Finder's "Go" menu, select
+   "Go to Folder..." . In the dialog pane that appears, enter:
      ~/Library/Application Support/Colloquy/Styles
 
-4. Copy the file Succinct.colloquyStyle file from Step 2 to the Styles folder
-   from Step 3.
+4. Copy the file Succinct.colloquyStyle file from the folder in Step 2 to the
+   Styles folder from Step 3.
 
 5. Start or re-start Colloquy.
 
-6. To change the style of one chatroom/channel, select the "Succinct" option
-   from the Style drop-down menu. Or, to set Succinct as your default Colloquy
-   chat style, choose the "Appearance Preferences..." option from the Style
-   drop-down menu. (Where you can can also choose to customize the colors via
-   the "Customize Style..." button.)
+
+Configuration
+-------------
+
+To change the style of one chatroom/channel, find the "Style" drop-down menu in
+the top left of the Colloquy's main window and select the "Succinct" option.
+
+Or, to set Succinct as your default Colloquy style, choose the "Appearance
+Preferences..." option from that "Style" drop-down menu.
+
+You can customize Succinct's colors by visiting the "Appearance" tab in
+Colloquy's preferences and clicking the "Customize Style..." button.
 
 
 Contributors
