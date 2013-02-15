@@ -62,7 +62,7 @@
 			<key>default</key>
 			<string>#efefef</string>
 			<key>style</key>
-			<string>/* Nickname background */ .message--sender, .event--sender { background-color: %@; } .message-outgoing:first-child .message--sender { border-top-color: %@; }</string>
+			<string>/* Nickname background */ .message__sender, .event__sender { background-color: %@; } .message--outgoing:first-child .message__sender { border-top-color: %@; }</string>
 		</dict>
 		<dict>
 			<key>description</key>
@@ -72,7 +72,7 @@
 			<key>default</key>
 			<string>rgba( 255, 255, 204, 0.0 )</string>
 			<key>style</key>
-			<string>/* Your nickname background */ .message-outgoing .message--sender { background-color: %@; }</string>
+			<string>/* Your nickname background */ .message--outgoing .message__sender { background-color: %@; }</string>
 		</dict>
 		<dict>
 			<key>description</key>
@@ -82,7 +82,7 @@
 			<key>default</key>
 			<string>#ffffcc</string>
 			<key>style</key>
-			<string>/* Your messages background */ .message-outgoing { background-color: %@; }</string>
+			<string>/* Your messages background */ .message--outgoing { background-color: %@; }</string>
 		</dict>
 		<dict>
 			<key>description</key>
@@ -92,7 +92,7 @@
 			<key>default</key>
 			<string>#d9e7fb</string>
 			<key>style</key>
-			<string>/* Highlighted messages background */ .message-highlight { background-color: %@; }</string>
+			<string>/* Highlighted messages background */ .message--highlight { background-color: %@; }</string>
 		</dict>
 		<dict>
 			<key>description</key>
@@ -102,7 +102,7 @@
 			<key>default</key>
 			<string>#eeffee</string>
 			<key>style</key>
-			<string>/* Notices background */ .message-notice { background-color: %@; }</string>
+			<string>/* Notices background */ .message--notice { background-color: %@; }</string>
 		</dict>
 	</array>
 	<key>NSHumanReadableCopyright</key>

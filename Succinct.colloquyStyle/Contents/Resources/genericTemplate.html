@@ -11,18 +11,18 @@
 
 <section id="contents" class="table"></section>
 
-<div id="modal--open" class="debug"><a href="javascript:showModal();">Get Source</a></div>
+<div id="modal__open" class="debug"><a href="javascript:showModal();">Get Source</a></div>
 <div id="modal" class="debug">
-	<div id="modal--overlay"></div>
-	<div id="modal--content"></div>
-	<div id="modal--close"><a href="javascript:hideModal();">Close</a></div>
+	<div id="modal__overlay"></div>
+	<div id="modal__content"></div>
+	<div id="modal__close"><a href="javascript:hideModal();">Close</a></div>
 </div>
 
 <script type="text/javascript">
 	contents     = document.getElementById('contents');
 	modal        = document.getElementById('modal');
-	modalContent = document.getElementById('modal--content');
-	modalOpen    = document.getElementById('modal--open');
+	modalContent = document.getElementById('modal__content');
+	modalOpen    = document.getElementById('modal__open');
 
 	function showModal() {
 		var source = contents.innerHTML;

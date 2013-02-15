@@ -73,41 +73,41 @@
   }
 }
 
-.message-highlight {
+.message--highlight {
   background-color: $bg-highlight;
 }
 
-.message-outgoing {
+.message--outgoing {
   background-color: $bg-outgoing;
 }
 
-.message-notice {
+.message--notice {
   background-color: $bg-notice;
 }
 
-.message--sender {
+.message__sender {
   @extend %sender;
   border-top: 1px solid transparent;
 
-  .message-outgoing & {
+  .message--outgoing & {
     background-color: transparent;
   }
 
-  .message-outgoing:first-child & {
+  .message--outgoing:first-child & {
     border-top: 1px solid $bg-incoming;
   }
 }
 
-.message + .message .message--sender .member {
+.message + .message .message__sender .member {
   display: none;
 }
 
-.message--content {
+.message__content {
   @extend %content;
   border-top: 1px solid $grey-border;
 }
 
-.message--timestamp {
+.message__timestamp {
   @extend %timestamp;
   border-top: 1px solid $grey-border;
   color: $grey-text-med;
@@ -134,7 +134,7 @@
     &,
     & a:link,
     & a:visited,
-    & .event--timestamp {
+    & .event__timestamp {
       color: $grey-text;
     }
   }
@@ -149,17 +149,17 @@
       position: relative;
       top: -4px; /* Un-do first event's bottom padding. */
     }
-    .event--sender {
+    .event__sender {
       top: 0;
     }
   }
 }
 
-.event--sender {
+.event__sender {
   @extend %sender;
 }
 
-.event--content {
+.event__content {
   @extend %content;
   font-style: italic;
   word-wrap: break-word;
@@ -167,16 +167,16 @@
   -khtml-nbsp-mode: space;
 }
 
-.event--timestamp {
+.event__timestamp {
   @extend %timestamp;
 }
 
 .envelope + .event {
-  .event--sender {
+  .event__sender {
     border-top: 1px solid transparent;
   }
-  .event--content,
-  .event--timestamp {
+  .event__content,
+  .event__timestamp {
     border-top: 1px solid $grey-border;
   }
 }

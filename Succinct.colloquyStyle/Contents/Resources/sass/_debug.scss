@@ -1,6 +1,6 @@
 $tab-height: ((16px * 0.8) + 10px);
 
-#modal--overlay {
+#modal__overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@ $tab-height: ((16px * 0.8) + 10px);
   background-color: white;
 }
 
-#modal--content {
+#modal__content {
   @extend %modal-element;
   top: 20px;
   bottom: 20px + $tab-height;
@@ -42,7 +42,7 @@ $tab-height: ((16px * 0.8) + 10px);
   }
 }
 
-#modal--open {
+#modal__open {
   @extend %modal-tab;
   bottom: 0;
   border-bottom: none;
@@ -51,7 +51,7 @@ $tab-height: ((16px * 0.8) + 10px);
 
 }
 
-#modal--close {
+#modal__close {
   @extend %modal-tab;
   bottom: 20px - 1px;
   border-top: 1px solid $bg-incoming;

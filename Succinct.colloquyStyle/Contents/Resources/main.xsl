@@ -29,24 +29,24 @@
 					<xsl:variable name="messageClasses">
 						<xsl:text>message</xsl:text>
 						<xsl:if test="@highlight = 'yes'">
-							<xsl:text> message-highlight</xsl:text>
+							<xsl:text> message--highlight</xsl:text>
 						</xsl:if>
 						<xsl:choose>
 							<xsl:when test="../sender/@self = 'yes'">
-								<xsl:text> message-outgoing</xsl:text>
+								<xsl:text> message--outgoing</xsl:text>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> message-incoming</xsl:text>
+								<xsl:text> message--incoming</xsl:text>
 							</xsl:otherwise>
 						</xsl:choose>
 						<xsl:if test="@action = 'yes'">
-							<xsl:text> message-action</xsl:text>
+							<xsl:text> message--action</xsl:text>
 						</xsl:if>
 						<xsl:if test="@type = 'notice'">
-							<xsl:text> message-notice</xsl:text>
+							<xsl:text> message--notice</xsl:text>
 						</xsl:if>
 						<xsl:if test="@ignored = 'yes' or ../@ignored = 'yes'">
-							<xsl:text> message-ignore</xsl:text>
+							<xsl:text> message--ignore</xsl:text>
 						</xsl:if>
 					</xsl:variable>
 
@@ -65,7 +65,7 @@
 					<xsl:variable name="memberClasses">
 						<xsl:text>member</xsl:text>
 						<xsl:if test="../sender/@self = 'yes'">
-							<xsl:text> member-self</xsl:text>
+							<xsl:text> member--self</xsl:text>
 						</xsl:if>
 					</xsl:variable>
 
@@ -85,11 +85,11 @@
 
 					<xsl:variable name="hostmask" select="../sender/@hostmask" />
 
-					<article id="{@id}" class="{$messageClasses} table--row">
-						<p class="message--sender table--cell">
+					<article id="{@id}" class="{$messageClasses} table__row">
+						<p class="message__sender table__cell">
 							<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="../sender" /></a><span class="hidden">: </span>
 						</p>
-						<p class="message--content table--cell">
+						<p class="message__content table__cell">
 							<xsl:if test="@action = 'yes'">
 								<xsl:text>• </xsl:text>
 								<a href="{$memberLink}" title="{$hostmask}" class="action {$memberClasses}">
@@ -99,7 +99,7 @@
 							</xsl:if>
 							<xsl:apply-templates select="child::node()" mode="copy" />
 						</p>
-						<time class="message--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
+						<time class="message__timestamp table__cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
 					</article>
 
 					<xsl:if test="not( $bulkTransform = 'yes' )">
@@ -118,24 +118,24 @@
 			<xsl:variable name="messageClasses">
 				<xsl:text>message</xsl:text>
 				<xsl:if test="message[not( @ignored = 'yes' )][1]/@highlight = 'yes'">
-					<xsl:text> message-highlight</xsl:text>
+					<xsl:text> message--highlight</xsl:text>
 				</xsl:if>
 				<xsl:choose>
 					<xsl:when test="sender/@self = 'yes'">
-						<xsl:text> message-outgoing</xsl:text>
+						<xsl:text> message--outgoing</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> message-incoming</xsl:text>
+						<xsl:text> message--incoming</xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
 				<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
-					<xsl:text> message-action</xsl:text>
+					<xsl:text> message--action</xsl:text>
 				</xsl:if>
 				<xsl:if test="message[not( @ignored = 'yes' )][1]/@type = 'notice'">
-					<xsl:text> message-notice</xsl:text>
+					<xsl:text> message--notice</xsl:text>
 				</xsl:if>
 				<xsl:if test="message[not( @ignored = 'yes' )][1]/@ignored = 'yes' or @ignored = 'yes'">
-					<xsl:text> message-ignore</xsl:text>
+					<xsl:text> message--ignore</xsl:text>
 				</xsl:if>
 			</xsl:variable>
 
@@ -154,7 +154,7 @@
 			<xsl:variable name="memberClasses">
 				<xsl:text>member</xsl:text>
 				<xsl:if test="sender/@self = 'yes'">
-					<xsl:text> member-self</xsl:text>
+					<xsl:text> member--self</xsl:text>
 				</xsl:if>
 			</xsl:variable>
 
@@ -174,12 +174,12 @@
 
 			<xsl:variable name="hostmask" select="sender/@hostmask" />
 
-			<div class="envelope table--row-group">
-				<article id="{message[not( @ignored = 'yes' )][1]/@id}" class="{$messageClasses} table--row">
-					<p class="message--sender table--cell">
+			<div class="envelope table__row-group">
+				<article id="{message[not( @ignored = 'yes' )][1]/@id}" class="{$messageClasses} table__row">
+					<p class="message__sender table__cell">
 						<a href="{$memberLink}" title="{$hostmask}" class="{$memberClasses}"><xsl:value-of select="sender" /></a><span class="hidden">: </span>
 					</p>
-					<p class="message--content table--cell">
+					<p class="message__content table__cell">
 						<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
 							<xsl:text>• </xsl:text>
 							<a href="{$memberLink}" title="{$hostmask}" class="action {$memberClasses}">
@@ -189,7 +189,7 @@
 						</xsl:if>
 						<xsl:apply-templates select="message[not( @ignored = 'yes' )][1]/child::node()" mode="copy" />
 					</p>
-					<time class="message--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
+					<time class="message__timestamp table__cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
 				</article>
 
 				<xsl:apply-templates select="message[not( @ignored = 'yes' )][position() &gt; 1]" mode="consecutive">
@@ -216,19 +216,19 @@
 			</xsl:call-template>
 		</xsl:variable>
 
-		<div class="event table--row">
-			<p class="event--sender table--cell"></p>
-			<p class="event--content table--cell">
+		<div class="event table__row">
+			<p class="event__sender table__cell"></p>
+			<p class="event__content table__cell">
 				<xsl:apply-templates select="message/child::node()" mode="event" />
 				<xsl:if test="string-length( reason )">
-					<span class="event--reason reason">
+					<span class="event__reason reason">
 						<xsl:text> (</xsl:text>
 						<xsl:apply-templates select="reason/child::node()" mode="copy" />
 						<xsl:text>)</xsl:text>
 					</span>
 				</xsl:if>
 			</p>
-			<time class="event--timestamp table--cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
+			<time class="event__timestamp table__cell" datetime="{$datetime}"> <xsl:value-of select="$timestamp" /></time>
 		</div>
 	</xsl:template>
 
