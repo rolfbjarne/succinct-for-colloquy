@@ -80,9 +80,3 @@ $bg-notice:       #eeffee;
 
 // Define the custom mixins for your project here.
 // http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#defining_a_mixin
-
-@mixin hide-text {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
