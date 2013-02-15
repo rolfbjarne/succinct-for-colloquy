@@ -234,7 +234,6 @@
 											or $extension = '.gif' or $extension = '.GIF'
 											or $extension = '.png' or $extension = '.PNG'
 											or $extension = '.tif' or $extension = '.TIF' or $extensionLong = '.tiff' or $extensionLong = '.TIFF'
-											or $extension = '.pdf' or $extension = '.PDF'
 											or $extension = '.bmp' or $extension = '.BMP'
 			">
 				<a href="{@href}" title="{@href}" class="image"><img src="{@href}" alt="Loading Image…" onload="scrollToBottom()" onerror="scrollToBottom()" class="image__img" /><span class="image__url"><xsl:value-of select="@href" /></span></a>
