@@ -20,7 +20,7 @@
 //
 // Legacy IE support
 //
-$legacy-support-for-ie: false;
+$legacy-support-for-ie      : false;
 
 
 // The following font family declarations are based on the Microsoft core web
@@ -35,35 +35,35 @@ $legacy-support-for-ie: false;
 // find any of the fonts in the list.
 
 // First, let's create some font stacks.
-$lucida: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
+$lucida                     : "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
 
 // For an explanation of why "sans-serif" is at the end of this list, see
 // http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
-$courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+$courier                    : "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
 // Now create some variables for the font stacks we want to use on this site.
-$base-font-family: $lucida; // The font family set on the html element.
-$font-body:        $lucida;
-$font-monospace:   $courier;
+$base-font-family           : $lucida; // The font family set on the html element.
+$font-body                  : $lucida;
+$font-monospace             : $courier;
 
-$colloquy-default-font-size: 16px;
+$colloquy-default-font-size : 16px;
 
 //
 // Colors, etc.
 //
 
-$grey-border:     #ddd;
-$grey-text-light: #aaa;
-$grey-text-med:   #666;
-$grey-text:       #4b4b4b;
-$grey-text-dark:  #333;
+$grey-border                : #ddd;
+$grey-text-light            : #aaa;
+$grey-text-med              : #666;
+$grey-text                  : #4b4b4b;
+$grey-text-dark             : #333;
 
-$blue-text:       #0033cc;
+$blue-text                  : #0033cc;
 
-$bg-incoming:     #efefef;
-$bg-outgoing:     #ffffcc;
-$bg-highlight:    #d9e7fb;
-$bg-notice:       #eeffee;
+$bg-incoming                : #efefef;
+$bg-outgoing                : #ffffcc;
+$bg-highlight               : #d9e7fb;
+$bg-notice                  : #eeffee;
 
 
 // =============================================================================
