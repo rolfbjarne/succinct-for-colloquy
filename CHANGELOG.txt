@@ -1,3 +1,9 @@
+Succinct 2.2, 2013-02-15
+------------------------
+- Bug fix: Messages sometimes out of order in Colloquy 2.4.
+- Bug fix: Messages sometimes misaligned in Colloquy 2.4.
+- Add a toggle to turn on/off inline display of images.
+
 Succinct 2.1, 2012-12-30
 ------------------------
 - Bug fix: Make default Succinct font size relative to Colloquy default font
@@ -7,7 +13,6 @@ Succinct 2.1, 2012-12-30
 
 Succinct 2.0, 2012-12-29
 ------------------------
-- Bug fix: Messages sometimes out of order in Colloquy 2.4
 - Bug fix: Timestamp doesn't respect system-wide time format
 - Bug fix: 12-hour time format has leading zero for AM times
 - Improved flexibility of style customization
