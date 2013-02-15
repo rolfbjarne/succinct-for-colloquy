@@ -36,7 +36,7 @@
 								<xsl:text> message-outgoing</xsl:text>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> messsage-incoming</xsl:text>
+								<xsl:text> message-incoming</xsl:text>
 							</xsl:otherwise>
 						</xsl:choose>
 						<xsl:if test="@action = 'yes'">
@@ -125,7 +125,7 @@
 						<xsl:text> message-outgoing</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> messsage-incoming</xsl:text>
+						<xsl:text> message-incoming</xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
 				<xsl:if test="message[not( @ignored = 'yes' )][1]/@action = 'yes'">
