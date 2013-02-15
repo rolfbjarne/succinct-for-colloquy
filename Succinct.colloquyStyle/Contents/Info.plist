@@ -80,7 +80,7 @@
 			<key>default</key>
 			<string>#efefef</string>
 			<key>style</key>
-			<string>/* Nickname background */ .message__sender, .event__sender { background-color: %@; } .message--outgoing:first-child .message__sender { border-top-color: %@; }</string>
+			<string>/* Nickname background */ .message__sender, .event__sender { background-color: %@; } .event + .message--outgoing .message__sender, .message--incoming + .message--outgoing .message__sender { border-top-color: %@; }</string>
 		</dict>
 		<dict>
 			<key>description</key>

@@ -79,7 +79,8 @@
     background-color: transparent;
   }
 
-  .message--outgoing:first-child & {
+  .event + .message--outgoing &,
+  .message--incoming + .message--outgoing & {
     border-top: 1px solid $bg-incoming;
   }
 }
