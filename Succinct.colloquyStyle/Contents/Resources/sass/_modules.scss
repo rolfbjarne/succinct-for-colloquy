@@ -167,3 +167,10 @@
     border-top: 1px solid $grey-border;
   }
 }
+
+/**
+ * Inline images
+ */
+.image__url {
+  display: none;
+}

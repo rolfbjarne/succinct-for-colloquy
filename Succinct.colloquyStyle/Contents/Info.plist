@@ -18,6 +18,24 @@
 	<array>
 		<dict>
 			<key>description</key>
+			<string>Display images</string>
+			<key>type</key>
+			<string>list</string>
+			<key>options</key>
+			<array>
+				<string>Yes</string>
+				<string>No</string>
+			</array>
+			<key>default</key>
+			<integer>0</integer>
+			<key>style</key>
+			<array>
+				<string>/* Display images */ .image__img { display: inline; } .image__url { display: none; }</string>
+				<string>/* Display images */ .image__img { display: none; } .image__url { display: inline; }</string>
+			</array>
+		</dict>
+		<dict>
+			<key>description</key>
 			<string>Display events</string>
 			<key>type</key>
 			<string>list</string>
