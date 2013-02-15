@@ -56,7 +56,8 @@
 }
 
 %content {
-  width: 100%; /* Force the content as wide as possible. */
+  /* Force the content as wide as possible. */
+  width: 100%;
 }
 
 %timestamp {
@@ -147,7 +148,8 @@
     > * {
       padding: 0 10px;
       position: relative;
-      top: -4px; /* Un-do first event's bottom padding. */
+      /* Un-do first event's bottom padding. */
+      top: -4px;
     }
     .event__sender {
       top: 0;

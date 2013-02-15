@@ -1,3 +1,7 @@
+/**
+ * Base HTML element rules
+ */
+
 html {
   font-family: $base-font-family;
   font-size: (13px / $colloquy-default-font-size) * 100%;
@@ -13,8 +17,9 @@ body {
 
 img {
   border: 0;
+  /* Golden ratio ~ 485/300 */
   max-height: 300px;
-  max-width: 485px; /* Golden ratio ~ 485/300 */
+  max-width: 485px;
 }
 
 a:link {
