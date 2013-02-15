@@ -187,6 +187,13 @@ a:focus {
 }
 
 /**
+ * Inline images
+ */
+.image__url {
+  display: none;
+}
+
+/**
  * Debug styling
  */
 /* Hide debug tools for normal usage. */
