@@ -1,3 +1,6 @@
+/**
+ * Base HTML element rules
+ */
 html {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
   font-size: 81.25%;
@@ -13,9 +16,9 @@ body {
 
 img {
   border: 0;
+  /* Golden ratio ~ 485/300 */
   max-height: 300px;
   max-width: 485px;
-  /* Golden ratio ~ 485/300 */
 }
 
 a:link {
@@ -31,25 +34,20 @@ a:focus {
   text-shadow: rgba(0, 0, 0, 0.3) 0 1px 1px;
 }
 
+/**
+ * Layout rules
+ */
 .table {
   display: table;
   width: 100%;
 }
 
-.table--row-group {
-  display: table-row-group;
-}
-
-.table--row {
+.table__row {
   display: table-row;
 }
 
-.table--cell {
+.table__cell {
   display: table-cell;
-}
-
-.debug {
-  display: none;
 }
 
 /**
@@ -76,14 +74,10 @@ a:focus {
   border-bottom: 1px solid #dddddd;
 }
 
-#consecutiveInsert {
-  display: none;
-}
-
 /**
  * Areas
  */
-.message--sender, .event--sender {
+.message__sender, .event__sender {
   min-width: 120px;
   border-right: 1px solid #dddddd;
   background-color: #efefef;
@@ -93,12 +87,12 @@ a:focus {
   word-wrap: break-word;
 }
 
-.message--content, .event--content {
-  width: 100%;
+.message__content, .event__content {
   /* Force the content as wide as possible. */
+  width: 100%;
 }
 
-.message--timestamp, .event--timestamp {
+.message__timestamp, .event__timestamp {
   font-size: 0.75rem;
   text-align: right;
 }
@@ -110,42 +104,42 @@ a:focus {
   padding: 4px 10px;
 }
 
-.message-highlight {
+.message--highlight {
   background-color: #d9e7fb;
 }
 
-.message-outgoing {
+.message--outgoing {
   background-color: #ffffcc;
 }
 
-.message-notice {
+.message--notice {
   background-color: #eeffee;
 }
 
-.message--sender {
+.message__sender {
   border-top: 1px solid transparent;
 }
-.message-outgoing .message--sender {
+.message--outgoing .message__sender {
   background-color: transparent;
 }
-.message-outgoing:first-child .message--sender {
+.message--outgoing:first-child .message__sender {
   border-top: 1px solid #efefef;
 }
 
-.message + .message .message--sender .member {
+.message--consecutive .message__sender .member {
   display: none;
 }
 
-.message--content {
+.message__content {
   border-top: 1px solid #dddddd;
 }
 
-.message--timestamp {
+.message__timestamp {
   border-top: 1px solid #dddddd;
   color: #666666;
 }
 
-.envelope:first-child .message:first-child > * {
+.message:first-child > * {
   border-top: none;
 }
 
@@ -161,7 +155,7 @@ a:focus {
 .event a:visited {
   color: #aaaaaa;
 }
-.event:hover, .event:hover a:link, .event:hover a:visited, .event:hover .event--timestamp {
+.event:hover, .event:hover a:link, .event:hover a:visited, .event:hover .event__timestamp {
   color: #4b4b4b;
 }
 .event > * {
@@ -170,29 +164,37 @@ a:focus {
 .event + .event > * {
   padding: 0 10px;
   position: relative;
-  top: -4px;
   /* Un-do first event's bottom padding. */
+  top: -4px;
 }
-.event + .event .event--sender {
+.event + .event .event__sender {
   top: 0;
 }
 
-.event--content {
+.event__content {
   font-style: italic;
   word-wrap: break-word;
   -khtml-line-break: after-white-space;
   -khtml-nbsp-mode: space;
 }
 
-.envelope + .event .event--sender {
+.message + .event .event__sender {
   border-top: 1px solid transparent;
 }
-.envelope + .event .event--content,
-.envelope + .event .event--timestamp {
+.message + .event .event__content,
+.message + .event .event__timestamp {
   border-top: 1px solid #dddddd;
 }
 
-#modal--overlay {
+/**
+ * Debug styling
+ */
+/* Hide debug tools for normal usage. */
+.debug {
+  display: none;
+}
+
+#modal__overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -202,14 +204,14 @@ a:focus {
   opacity: 0.7;
 }
 
-#modal--content, #modal--open, #modal--close {
+#modal__content, #modal__open, #modal__close {
   position: fixed;
   border: 1px solid #4b4b4b;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
 
-#modal--content {
+#modal__content {
   top: 20px;
   bottom: 42.8px;
   left: 20px;
@@ -218,28 +220,28 @@ a:focus {
   overflow: auto;
 }
 
-#modal--open, #modal--close {
+#modal__open, #modal__close {
   height: 22.8px;
   right: 20px;
   padding: 0 5px;
   line-height: 23px;
   text-align: center;
 }
-#modal--open a:link, #modal--close a:link,
-#modal--open a:visited,
-#modal--close a:visited {
+#modal__open a:link, #modal__close a:link,
+#modal__open a:visited,
+#modal__close a:visited {
   color: #4b4b4b;
   text-decoration: none;
 }
 
-#modal--open {
+#modal__open {
   bottom: 0;
   border-bottom: none;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-#modal--close {
+#modal__close {
   bottom: 19px;
   border-top: 1px solid #efefef;
   border-bottom-left-radius: 5px;
