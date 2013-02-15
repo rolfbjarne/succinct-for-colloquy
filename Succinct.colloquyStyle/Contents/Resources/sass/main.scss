@@ -1,4 +1,5 @@
-@import "common"; // Import Sass mixins, variables, Compass modules, etc.
+// Import Sass mixins, variables, Compass modules, etc.
+@import "init";
 
 
 // Base rules
@@ -9,10 +10,4 @@
 
 // Module rules
 @import "modules";
-
-// Global state rules
-@import "global-states";
-
-// Theme rules
-// @import "theme-A";
-// @import "theme-B";
+@import "debug";
