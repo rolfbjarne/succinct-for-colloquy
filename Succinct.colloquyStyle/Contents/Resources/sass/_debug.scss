@@ -4,6 +4,11 @@
 
 $tab-height: ((16px * 0.8) + 10px);
 
+/* Hide debug tools for normal usage. */
+.debug {
+  display: none;
+}
+
 #modal__overlay {
   position: fixed;
   top: 0;
