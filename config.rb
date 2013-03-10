@@ -15,11 +15,11 @@ firesass = false
 
 
 # Location of the your project's resources.
-css_dir         = "."
-sass_dir        = "sass"
-extensions_dir  = "sass-extensions"
-images_dir      = "images"
-javascripts_dir = "js"
+css_dir         = "Succinct.colloquyStyle/Contents/Resources"
+sass_dir        = "Succinct.colloquyStyle/Contents/Resources/sass"
+extensions_dir  = "Succinct.colloquyStyle/Contents/Resources/sass-extensions"
+images_dir      = "Succinct.colloquyStyle/Contents/Resources/images"
+javascripts_dir = "Succinct.colloquyStyle/Contents/Resources/js"
 
 # Set this to the root of your project. All resource locations above are
 # considered to be relative to this path.
